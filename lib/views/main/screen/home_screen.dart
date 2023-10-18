@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/main/image_controller.dart';
+import 'package:hotel_booking_app/views/main/components/imageItem.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<ImageController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ImageController());
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -25,13 +29,8 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.asset('assets/images/unnamed.png'),
-                    ),
+                  const InkWell(
+                    child: SizedBox(width: 60, height: 60, child: ImageItem()),
                   ),
                   const SizedBox(width: 10),
                   const Expanded(
