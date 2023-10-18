@@ -30,7 +30,11 @@ class HomeScreen extends GetView<ImageController> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const InkWell(
-                    child: SizedBox(width: 60, height: 60, child: ImageItem()),
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: ImageItem(),
+                    ),
                   ),
                   const SizedBox(width: 10),
                   const Expanded(
@@ -41,10 +45,10 @@ class HomeScreen extends GetView<ImageController> {
                         Padding(
                           padding: EdgeInsets.only(top: 12),
                           child: Text(
-                            'Welcome, username',
+                            'Welcome, Ulum',
                             style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -57,13 +61,13 @@ class HomeScreen extends GetView<ImageController> {
                               color: AppColors.secondaryColor,
                             ),
                             SizedBox(
-                              width: 3,
+                              width: 4,
                             ),
                             Text(
                               'Jawa',
                               style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
@@ -75,7 +79,7 @@ class HomeScreen extends GetView<ImageController> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        iconSize: 30,
+                        iconSize: 33,
                         icon: const Icon(
                           Icons.notifications,
                         ),
@@ -83,7 +87,7 @@ class HomeScreen extends GetView<ImageController> {
                       ),
                       Positioned(
                         top: 12,
-                        right: 12,
+                        right: 13,
                         child: Container(
                           height: 10,
                           width: 10,
@@ -107,16 +111,17 @@ class HomeScreen extends GetView<ImageController> {
                     text: const TextSpan(
                       text: 'Find Your Perfect ',
                       style: TextStyle(
-                        fontSize: 23,
+                        fontSize: 25,
                         color: AppColors.blackColor,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w800,
                       ),
                       children: [
                         TextSpan(
                           text: 'Hotel',
                           style: TextStyle(
-                            color: AppColors.secondaryColor,
-                          ),
+                              fontSize: 25,
+                              color: AppColors.secondaryColor,
+                              fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
@@ -129,8 +134,10 @@ class HomeScreen extends GetView<ImageController> {
               //Search Input
 
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 18,
+                  horizontal: 10,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -138,17 +145,19 @@ class HomeScreen extends GetView<ImageController> {
                     const Text(
                       'Popular',
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     InkWell(
                       onTap: () {},
                       child: Ink(
                         child: const Text(
-                          'See all',
+                          'See All',
                           style: TextStyle(
                             color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 13,
                           ),
                         ),
                       ),
@@ -179,8 +188,10 @@ class HomeScreen extends GetView<ImageController> {
               // list Popular
 
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 18,
+                  horizontal: 10,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,17 +199,19 @@ class HomeScreen extends GetView<ImageController> {
                     const Text(
                       'Nearby Location',
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     InkWell(
                       onTap: () {},
                       child: Ink(
                         child: const Text(
-                          'See all',
+                          'See All',
                           style: TextStyle(
                             color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 13,
                           ),
                         ),
                       ),

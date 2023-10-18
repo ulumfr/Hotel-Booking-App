@@ -14,20 +14,33 @@ class SearchTextfield extends StatelessWidget {
         children: [
           Expanded(
             child: SizedBox(
-              height: 50,
+              height: 46,
               child: TextFormField(
                 decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.horizontal(left: Radius.circular(15)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(15),
+                    ),
+                    borderSide: BorderSide(
+                      color: AppColors.gray3Color,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(15),
+                    ),
+                    borderSide: BorderSide(
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                   hintText: 'What are you looking for',
                   hintStyle: TextStyle(
                     fontSize: 13,
-                    color: AppColors.gray4Color,
+                    color: AppColors.gray3Color,
                   ),
                   prefixIcon: Icon(
                     Icons.search,
+                    color: AppColors.gray3Color,
                   ),
                 ),
               ),
@@ -37,8 +50,8 @@ class SearchTextfield extends StatelessWidget {
             onTap: () {},
             child: Ink(
               child: Container(
-                width: 50,
-                height: 50,
+                width: 44,
+                height: 46,
                 decoration: const BoxDecoration(
                   color: AppColors.primaryColor,
                   borderRadius: BorderRadius.horizontal(
@@ -46,7 +59,7 @@ class SearchTextfield extends StatelessWidget {
                   ),
                 ),
                 child: const Icon(
-                  Icons.filter_alt_sharp,
+                  Icons.align_horizontal_right,
                   color: Colors.white,
                 ),
               ),

@@ -73,7 +73,7 @@ class VerticalCardItem extends StatelessWidget {
                                 name,
                                 style: const TextStyle(
                                   fontSize: 15,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -84,7 +84,7 @@ class VerticalCardItem extends StatelessWidget {
                                 children: [
                                   const Icon(
                                     Icons.location_on_outlined,
-                                    size: 15,
+                                    size: 17,
                                     color: AppColors.secondaryColor,
                                   ),
                                   Text(
@@ -93,6 +93,7 @@ class VerticalCardItem extends StatelessWidget {
                                       fontSize: 12,
                                       overflow: TextOverflow.ellipsis,
                                       fontWeight: FontWeight.w300,
+                                      color: AppColors.gray3Color,
                                     ),
                                   )
                                 ],
@@ -109,8 +110,8 @@ class VerticalCardItem extends StatelessWidget {
                             height: 25,
                             padding: const EdgeInsets.all(3),
                             child: const Icon(
-                              Icons.bookmark_outline,
-                              color: Colors.orange,
+                              Icons.bookmark_outline_rounded,
+                              color: AppColors.secondaryColor,
                             ),
                           ),
                         ),
@@ -133,18 +134,19 @@ class VerticalCardItem extends StatelessWidget {
                           text: TextSpan(
                             text: '$price\$/',
                             style: const TextStyle(
-                              fontSize: 12,
-                              color: AppColors.blackColor,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w800,
                               overflow: TextOverflow.ellipsis,
                             ),
                             children: const [
                               TextSpan(
                                 text: 'night',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w300,
                                   overflow: TextOverflow.ellipsis,
+                                  color: AppColors.gray3Color,
                                 ),
                               ),
                             ],

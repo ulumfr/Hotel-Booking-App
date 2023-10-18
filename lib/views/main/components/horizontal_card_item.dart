@@ -64,8 +64,8 @@ class HorizontalCardItem extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {},
                       icon: const Icon(
-                        Icons.bookmark_outline,
-                        color: Colors.white,
+                        Icons.bookmark_outline_rounded,
+                        color: AppColors.secondaryColor,
                         size: 28,
                       ),
                     ),
@@ -74,15 +74,15 @@ class HorizontalCardItem extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 3),
           SizedBox(
             width: double.infinity,
             child: Text(
               name,
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
@@ -92,16 +92,17 @@ class HorizontalCardItem extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.location_on_outlined,
-                  size: 12,
+                  size: 17,
                   color: AppColors.secondaryColor,
                 ),
-                const SizedBox(width: 3),
+                const SizedBox(width: 2),
                 Text(
                   location,
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12,
                     fontWeight: FontWeight.w300,
+                    color: AppColors.gray3Color,
                   ),
                 ),
               ],
@@ -119,18 +120,19 @@ class HorizontalCardItem extends StatelessWidget {
                     text: TextSpan(
                       text: '$price\$/',
                       style: const TextStyle(
-                        fontSize: 12,
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w800,
                         overflow: TextOverflow.ellipsis,
                       ),
                       children: const [
                         TextSpan(
                           text: 'night',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 13,
                             fontWeight: FontWeight.w300,
                             overflow: TextOverflow.ellipsis,
+                            color: AppColors.gray3Color,
                           ),
                         ),
                       ],
