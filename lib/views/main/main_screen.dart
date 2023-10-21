@@ -12,8 +12,6 @@ class MainScreen extends GetView<MainScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MainScreenController());
-
     List<Widget> listWidgetMain = [
       const HomeScreen(),
       const BookingScreen(),

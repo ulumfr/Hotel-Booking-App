@@ -10,8 +10,6 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(OnboardingScreenController());
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

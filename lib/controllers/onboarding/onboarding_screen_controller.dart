@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/views/main/main_screen.dart';
 
 class OnboardingScreenController extends GetxController {
   var currentIndex = 0.obs;
@@ -11,6 +10,6 @@ class OnboardingScreenController extends GetxController {
   }
 
   void skipToMainScreen() {
-    Get.to(() => const MainScreen());
+    Get.offAndToNamed('/main');
   }
 }
