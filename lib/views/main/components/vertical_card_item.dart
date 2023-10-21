@@ -43,15 +43,10 @@ class VerticalCardItem extends StatelessWidget {
             height: 75,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                photo,
-                fit: BoxFit.fitHeight,
-              ),
+              child: Image.asset(photo, fit: BoxFit.fitHeight),
             ),
           ),
-          const SizedBox(
-            width: 5,
-          ),
+          const SizedBox(width: 5),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,9 +59,7 @@ class VerticalCardItem extends StatelessWidget {
                       Expanded(
                         child: Column(
                           children: [
-                            const SizedBox(
-                              height: 5,
-                            ),
+                            const SizedBox(height: 5),
                             SizedBox(
                               width: double.infinity,
                               child: Text(
@@ -125,9 +118,7 @@ class VerticalCardItem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Rating(
-                        ratingTotal: rating,
-                      ),
+                      Rating(ratingTotal: rating),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: RichText(

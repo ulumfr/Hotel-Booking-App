@@ -49,10 +49,7 @@ class HorizontalCardItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      photo,
-                      fit: BoxFit.fitHeight,
-                    ),
+                    child: Image.asset(photo, fit: BoxFit.fitHeight),
                   ),
                 ),
                 Positioned(

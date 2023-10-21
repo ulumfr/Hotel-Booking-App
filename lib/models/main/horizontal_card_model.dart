@@ -23,8 +23,8 @@ List<Hotel> popularHotels = [
     rating: 4.0,
   ),
   Hotel(
-    name: 'Gatau Dimana',
-    location: 'Indonesia',
+    name: 'Rayz UMM Hotel Malang',
+    location: 'Malang, Indonesia',
     photo: 'assets/images/kamar2.jpg',
     price: '100',
     rating: 4.0,

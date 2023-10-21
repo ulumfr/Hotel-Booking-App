@@ -7,7 +7,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Profile"),
+        child: Text("Profile (SOON!)"),
       ),
     );
   }

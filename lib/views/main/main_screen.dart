@@ -22,9 +22,7 @@ class MainScreen extends GetView<MainScreenController> {
     ];
 
     return Scaffold(
-      body: Obx(
-        () => listWidgetMain[controller.indexMainScreen.value],
-      ),
+      body: Obx(() => listWidgetMain[controller.indexMainScreen.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           currentIndex: controller.indexMainScreen.value,
@@ -51,7 +49,7 @@ class MainScreen extends GetView<MainScreenController> {
           ],
           onTap: (index) {
             controller.indexMainScreen.value = index;
-          },
+          }
         ),
       ),
     );

@@ -17,8 +17,7 @@ List<OnBoardingContent> geser = [
     text: "Fast Respond",
     image1: 'assets/images/view.jpg',
     image2: 'assets/images/view2.jpg',
-    dsc:
-        'Experience the ease of fast and efficient hotel booking with our service. Booking a hotel has never been this easy',
+    dsc: 'Experience the ease of fast and efficient hotel booking with our service',
   ),
   OnBoardingContent(
     text: "The Best Hotels For you",
@@ -30,6 +29,6 @@ List<OnBoardingContent> geser = [
     text: "Book Now, Stay Immediately",
     image1: 'assets/images/view5.jpg',
     image2: 'assets/images/view6.jpg',
-    dsc: 'Enjoy a fast and easy hotel booking experience with us.',
+    dsc: 'Enjoy a fast and easy hotel booking experience with us',
   )
 ];

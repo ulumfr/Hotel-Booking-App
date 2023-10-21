@@ -45,9 +45,10 @@ class Rating extends StatelessWidget {
         Text(
           ratingTotal <= 5 ? ratingTotal.toString() : '5.0',
           style: const TextStyle(
-              overflow: TextOverflow.ellipsis,
-              fontSize: 12,
-              fontWeight: FontWeight.w300),
+            overflow: TextOverflow.ellipsis,
+            fontSize: 12,
+            fontWeight: FontWeight.w300,
+          ),
         )
       ],
     );

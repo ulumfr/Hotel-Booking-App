@@ -21,17 +21,13 @@ class SearchTextfield extends StatelessWidget {
                     borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(15),
                     ),
-                    borderSide: BorderSide(
-                      color: AppColors.gray3Color,
-                    ),
+                    borderSide: BorderSide(color: AppColors.gray3Color),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(15),
                     ),
-                    borderSide: BorderSide(
-                      color: AppColors.primaryColor,
-                    ),
+                    borderSide: BorderSide(color: AppColors.primaryColor),
                   ),
                   hintText: 'What are you looking for',
                   hintStyle: TextStyle(

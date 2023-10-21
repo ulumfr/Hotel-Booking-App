@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/main/image_controller.dart';
-import 'package:hotel_booking_app/views/main/components/imageItem.dart';
+import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
+import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
-class HomeScreen extends GetView<ImageController> {
+class HomeScreen extends GetView<ImagepickerController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ImageController());
+    Get.put(ImagepickerController());
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 15,
-            right: 15,
-            top: 15,
-          ),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
           child: Column(
             children: [
-              // AppBar =======
+              // AppBar
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -33,7 +30,7 @@ class HomeScreen extends GetView<ImageController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: ImageItem(),
+                      child: ImagepickerItem(),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -60,9 +57,7 @@ class HomeScreen extends GetView<ImageController> {
                               size: 15,
                               color: AppColors.secondaryColor,
                             ),
-                            SizedBox(
-                              width: 4,
-                            ),
+                            SizedBox(width: 4),
                             Text(
                               'Jawa',
                               style: TextStyle(
@@ -80,9 +75,7 @@ class HomeScreen extends GetView<ImageController> {
                       IconButton(
                         onPressed: () {},
                         iconSize: 33,
-                        icon: const Icon(
-                          Icons.notifications,
-                        ),
+                        icon: const Icon(Icons.notifications),
                         color: AppColors.primaryColor,
                       ),
                       Positioned(
@@ -101,7 +94,7 @@ class HomeScreen extends GetView<ImageController> {
                   ),
                 ],
               ),
-              // AppBar =======
+              // AppBar
 
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 15),
@@ -119,9 +112,10 @@ class HomeScreen extends GetView<ImageController> {
                         TextSpan(
                           text: 'Hotel',
                           style: TextStyle(
-                              fontSize: 25,
-                              color: AppColors.secondaryColor,
-                              fontWeight: FontWeight.w700),
+                            fontSize: 25,
+                            color: AppColors.secondaryColor,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ],
                     ),
@@ -180,8 +174,9 @@ class HomeScreen extends GetView<ImageController> {
                     price: popularHotels[index].price,
                     rating: popularHotels[index].rating,
                   ),
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(width: 10),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
                   itemCount: popularHotels.length,
                 ),
               ),
