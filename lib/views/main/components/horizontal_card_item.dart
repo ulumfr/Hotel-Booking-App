@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/rating.dart';
 
 class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
     Key? key,
-    required this.name,
-    required this.location,
-    required this.photo,
-    required this.price,
-    required this.rating,
+    required this.horizontalCard,
   }) : super(key: key);
 
-  final String name;
-  final String location;
-  final String photo;
-  final String price;
-  final double rating;
+  final HotelHorizontalCard horizontalCard;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +42,8 @@ class HorizontalCardItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(photo, fit: BoxFit.fitHeight),
+                    child: Image.asset(horizontalCard.photo,
+                        fit: BoxFit.fitHeight),
                   ),
                 ),
                 Positioned(
@@ -75,7 +69,7 @@ class HorizontalCardItem extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Text(
-              name,
+              horizontalCard.name,
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
                 fontSize: 14,
@@ -94,7 +88,7 @@ class HorizontalCardItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 Text(
-                  location,
+                  horizontalCard.location,
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12,
@@ -110,12 +104,12 @@ class HorizontalCardItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Rating(ratingTotal: rating),
+                Rating(ratingTotal: horizontalCard.rating),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: RichText(
                     text: TextSpan(
-                      text: '$price\$/',
+                      text: '${horizontalCard.price}\$/',
                       style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.primaryColor,

@@ -20,14 +20,14 @@ class AppRoutes {
         name: '/onboarding',
         page: () => const OnboardingScreen(),
         binding: BindingsBuilder(() {
-          Get.put(OnboardingScreenController());
+          Get.lazyPut(() => OnboardingScreenController());
         })),
     GetPage(
         name: '/main',
         page: () => const MainScreen(),
         binding: BindingsBuilder(() {
-          Get.put(MainScreenController());
-          Get.put(ImagepickerController());
+          Get.lazyPut(() => MainScreenController());
+          Get.lazyPut(() => ImagepickerController());
         })),
   ];
 }

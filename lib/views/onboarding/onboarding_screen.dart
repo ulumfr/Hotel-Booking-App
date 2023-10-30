@@ -54,9 +54,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                               alignment: AlignmentDirectional.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width *
-                                      (50 / 100),
-                                  height: 245,
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
+                                  height: MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     left: 150,
                                     top: 90,
@@ -74,9 +73,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width *
-                                      (50 / 100),
-                                  height: 245,
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
+                                  height: MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     right: 150,
                                     bottom: 90,

@@ -164,11 +164,7 @@ class HomeScreen extends StatelessWidget {
                   clipBehavior: Clip.none,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => HorizontalCardItem(
-                    name: popularHotels[index].name,
-                    location: popularHotels[index].location,
-                    photo: popularHotels[index].photo,
-                    price: popularHotels[index].price,
-                    rating: popularHotels[index].rating,
+                    horizontalCard: popularHotels[index],
                   ),
                   separatorBuilder: (context, index) => const SizedBox(
                     width: 10,
@@ -218,11 +214,7 @@ class HomeScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => VerticalCardItem(
-                    name: nearbyHotels[index].name,
-                    location: nearbyHotels[index].location,
-                    photo: nearbyHotels[index].photo,
-                    price: nearbyHotels[index].price,
-                    rating: nearbyHotels[index].rating,
+                    verticalCard: nearbyHotels[index],
                   ),
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 10),
