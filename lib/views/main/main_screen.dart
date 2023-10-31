@@ -23,32 +23,31 @@ class MainScreen extends GetView<MainScreenController> {
       body: Obx(() => listWidgetMain[controller.indexMainScreen.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          currentIndex: controller.indexMainScreen.value,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: AppColors.primaryColor,
-          unselectedItemColor: AppColors.gray3Color,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag),
-              label: 'Book',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_rounded),
-              label: 'Wish List',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_2_rounded),
-              label: 'Profile',
-            )
-          ],
-          onTap: (index) {
-            controller.indexMainScreen.value = index;
-          }
-        ),
+            currentIndex: controller.indexMainScreen.value,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: AppColors.primaryColor,
+            unselectedItemColor: AppColors.gray3Color,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_bag),
+                label: 'Book',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.bookmark_rounded),
+                label: 'Wish List',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_2_rounded),
+                label: 'Profile',
+              )
+            ],
+            onTap: (index) {
+              controller.indexMainScreen.value = index;
+            }),
       ),
     );
   }

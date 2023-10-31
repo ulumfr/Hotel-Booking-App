@@ -1,11 +1,11 @@
-class Hotel {
+class HotelVerticalCard {
   final String name;
   final String location;
   final String photo;
   final String price;
   final double rating;
 
-  Hotel({
+  HotelVerticalCard({
     required this.name,
     required this.location,
     required this.photo,
@@ -14,15 +14,15 @@ class Hotel {
   });
 }
 
-List<Hotel> nearbyHotels = [
-  Hotel(
+List<HotelVerticalCard> nearbyHotels = [
+  HotelVerticalCard(
     name: 'The Nile Ritz-Carlton, Cairo',
     location: 'Cairo',
     photo: 'assets/images/kamar3.jpg',
     price: '110',
     rating: 5.0,
   ),
-  Hotel(
+  HotelVerticalCard(
     name: 'Manhattan Hotel Jakarta',
     location: 'Indonesia',
     photo: 'assets/images/view3.jpg',
