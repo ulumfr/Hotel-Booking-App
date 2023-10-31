@@ -33,7 +33,6 @@ class AppRoutes {
       binding: BindingsBuilder(() {
         Get.lazyPut(() => MainScreenController());
         Get.lazyPut(() => ImagepickerController());
-        Get.lazyPut<WebviewhotelController>(() => WebviewhotelController());
         Get.put(HomeScreenController());
       }),
     ),
