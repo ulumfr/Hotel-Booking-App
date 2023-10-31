@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/main/homescreen_controller.dart';
 import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
@@ -7,7 +9,7 @@ import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeScreenController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -160,6 +162,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 220,
                 width: double.infinity,
+<<<<<<< Updated upstream
                 child: ListView.separated(
                   clipBehavior: Clip.none,
                   scrollDirection: Axis.horizontal,
@@ -174,6 +177,31 @@ class HomeScreen extends StatelessWidget {
                     width: 10,
                   ),
                   itemCount: popularHotels.length,
+=======
+                child: FutureBuilder<QuerySnapshot<Object?>>(
+                  future: controller.getData(),
+                  builder: (context, snapshot) {
+                    if(snapshot.connectionState == ConnectionState.done){
+                      var listDocs = snapshot.data!.docs;
+                      return ListView.separated(
+                        clipBehavior: Clip.none,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => HorizontalCardItem(
+                          horizontalCard: popularHotels[index],
+                          name: (listDocs[index].data() as Map<String,dynamic>)["name"],
+                          location: (listDocs[index].data() as Map<String,dynamic>)["location"],
+                          price: (listDocs[index].data() as Map<String,dynamic>)["price"],
+                          rating: (listDocs[index].data() as Map<String,dynamic>)["rating"],
+                        ),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemCount: listDocs.length-2,
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  }
+>>>>>>> Stashed changes
                 ),
               ),
               // list Popular

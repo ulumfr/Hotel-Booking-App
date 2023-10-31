@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/controllers/main/homescreen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
 import 'package:hotel_booking_app/controllers/main/main_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/onboarding/onboarding_screen_controller.dart';
@@ -23,11 +24,37 @@ class AppRoutes {
           Get.put(OnboardingScreenController());
         })),
     GetPage(
+<<<<<<< Updated upstream
         name: '/main',
         page: () => const MainScreen(),
         binding: BindingsBuilder(() {
           Get.put(MainScreenController());
           Get.put(ImagepickerController());
         })),
+=======
+      name: '/main',
+      page: () => const MainScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => MainScreenController());
+        Get.lazyPut(() => ImagepickerController());
+        Get.lazyPut<WebviewhotelController>(() => WebviewhotelController());
+        Get.put(HomeScreenController());
+      }),
+    ),
+    GetPage(
+      name: '/webpopular',
+      page: () => const WebviewPopular(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => WebviewhotelController());
+      }),
+    ),
+    GetPage(
+      name: '/webnearby',
+      page: () => const WebviewNearby(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => WebviewhotelController());
+      }),
+    ),
+>>>>>>> Stashed changes
   ];
 }
