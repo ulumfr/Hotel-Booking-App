@@ -7,9 +7,17 @@ class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
     Key? key,
     required this.horizontalCard,
+    required this.name,
+    required this.location,
+    required this.price,
+    required this.rating
   }) : super(key: key);
 
   final HotelHorizontalCard horizontalCard;
+  final String name;
+  final String location;
+  final String price;
+  final String rating;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +77,7 @@ class HorizontalCardItem extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Text(
-              horizontalCard.name,
+              name,
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
                 fontSize: 14,
@@ -88,7 +96,7 @@ class HorizontalCardItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 Text(
-                  horizontalCard.location,
+                  location,
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12,
@@ -104,12 +112,12 @@ class HorizontalCardItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Rating(ratingTotal: horizontalCard.rating),
+                Rating(ratingTotal: double.parse(rating)),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: RichText(
                     text: TextSpan(
-                      text: '${horizontalCard.price}\$/',
+                      text: '${price}\$/',
                       style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.primaryColor,

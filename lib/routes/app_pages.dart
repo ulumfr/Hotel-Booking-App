@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/controllers/main/homescreen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
 import 'package:hotel_booking_app/controllers/main/main_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/webviewhotel_controller.dart';
@@ -33,6 +34,7 @@ class AppRoutes {
         Get.lazyPut(() => MainScreenController());
         Get.lazyPut(() => ImagepickerController());
         Get.lazyPut<WebviewhotelController>(() => WebviewhotelController());
+        Get.put(HomeScreenController());
       }),
     ),
     GetPage(
