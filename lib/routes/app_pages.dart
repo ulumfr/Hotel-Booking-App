@@ -17,17 +17,19 @@ class AppRoutes {
       }),
     ),
     GetPage(
-        name: '/onboarding',
-        page: () => const OnboardingScreen(),
-        binding: BindingsBuilder(() {
-          Get.lazyPut(() => OnboardingScreenController());
-        })),
+      name: '/onboarding',
+      page: () => const OnboardingScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => OnboardingScreenController());
+      }),
+    ),
     GetPage(
-        name: '/main',
-        page: () => const MainScreen(),
-        binding: BindingsBuilder(() {
-          Get.lazyPut(() => MainScreenController());
-          Get.lazyPut(() => ImagepickerController());
-        })),
+      name: '/main',
+      page: () => const MainScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => MainScreenController());
+        Get.lazyPut(() => ImagepickerController());
+      }),
+    ),
   ];
 }
