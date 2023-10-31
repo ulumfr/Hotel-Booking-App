@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
@@ -6,7 +7,6 @@ import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
-import 'package:hotel_booking_app/views/main/screen/webview_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -142,13 +142,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return WebViewContainer();
-                            },
-                          ),
-                        );
+                        Get.toNamed('/webpopular');
                       },
                       child: Ink(
                         child: const Text(
@@ -200,7 +194,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/webnearby');
+                      },
                       child: Ink(
                         child: const Text(
                           'See All',
