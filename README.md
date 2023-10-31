@@ -9,4 +9,4 @@ The hotel booking application project aims to provide a platform for users to br
 
 ## Design
 
-Slicing the application design from https://www.behance.net/gallery/175409295/Hotel-Booking-App-Case-Study-(travel-app)
+Slicing the application design from https://www.behance.net/gallery/175409295/Hotel-Booking-App-Case-Study-(travel-app).
