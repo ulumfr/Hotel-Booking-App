@@ -1,32 +1,39 @@
-class HotelHorizontalCard {
-  final String name;
-  final String location;
+class HotelHorizontalCardPhoto {
   final String photo;
-  final String price;
-  final double rating;
+
+  HotelHorizontalCardPhoto({
+    required this.photo,
+  });
+}
+
+List<HotelHorizontalCardPhoto> popularHotels = [
+  HotelHorizontalCardPhoto(
+    photo: 'assets/images/kamar3.jpg',
+  ),
+  HotelHorizontalCardPhoto(
+    photo: 'assets/images/kamar2.jpg',
+  ),
+];
+
+class HotelHorizontalCard {
+  String name;
+  String location;
+  double price;
+  double rating;
 
   HotelHorizontalCard({
     required this.name,
     required this.location,
-    required this.photo,
     required this.price,
     required this.rating,
   });
-}
 
-List<HotelHorizontalCard> popularHotels = [
-  HotelHorizontalCard(
-    name: 'Sheraton Montazah Hotel',
-    location: 'Alexandra, Egypt',
-    photo: 'assets/images/kamar1.jpg',
-    price: '100',
-    rating: 4.0,
-  ),
-  HotelHorizontalCard(
-    name: 'Rayz UMM Hotel Malang',
-    location: 'Malang, Indonesia',
-    photo: 'assets/images/kamar2.jpg',
-    price: '100',
-    rating: 4.0,
-  ),
-];
+  factory HotelHorizontalCard.fromMap(Map<String, dynamic> data) {
+    return HotelHorizontalCard(
+      name: data["name"] ?? "",
+      location: data["location"] ?? "",
+      price: data["price"] != null ? double.parse(data["price"].toString()) : 0.0,
+      rating: data["rating"] != null ? double.parse(data["rating"].toString()) : 0.0,
+    );
+  }
+}

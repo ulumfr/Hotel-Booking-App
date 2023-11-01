@@ -166,28 +166,27 @@ class HomeScreen extends GetView<HomeScreenController> {
                 height: 220,
                 width: double.infinity,
                 child: FutureBuilder<QuerySnapshot<Object?>>(
-                    future: controller.getData(),
-                    builder: (context, snapshot) {
-                      if(snapshot.connectionState == ConnectionState.done){
-                        var listDocs = snapshot.data!.docs;
-                        return ListView.separated(
-                          clipBehavior: Clip.none,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => HorizontalCardItem(
-                            horizontalCard: popularHotels[index],
-                            name: (listDocs[index].data() as Map<String,dynamic>)["name"],
-                            location: (listDocs[index].data() as Map<String,dynamic>)["location"],
-                            price: (listDocs[index].data() as Map<String,dynamic>)["price"],
-                            rating: (listDocs[index].data() as Map<String,dynamic>)["rating"],
+                  future: controller.getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      var listDocs = snapshot.data!.docs;
+                      return ListView.separated(
+                        clipBehavior: Clip.none,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => HorizontalCardItem(
+                          horizontalCard: HotelHorizontalCard.fromMap(
+                            listDocs[index].data() as Map<String, dynamic>,
                           ),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
-                          itemCount: listDocs.length-2,
-                        );
-                      }
-                      return Center(child: CircularProgressIndicator());
+                          photoHorizontal: popularHotels[index],
+                        ),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemCount: listDocs.length - 2,
+                      );
                     }
+                    return const Center(child: CircularProgressIndicator());
+                  },
                 ),
               ),
               // list Popular
@@ -230,15 +229,38 @@ class HomeScreen extends GetView<HomeScreenController> {
               //List Nearby Location
               SizedBox(
                 width: double.infinity,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => VerticalCardItem(
-                    verticalCard: nearbyHotels[index],
-                  ),
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 10),
-                  itemCount: nearbyHotels.length,
+                // child: ListView.separated(
+                //   shrinkWrap: true,
+                //   physics: const NeverScrollableScrollPhysics(),
+                //   itemBuilder: (context, index) => VerticalCardItem(
+                //     verticalCard: nearbyHotels[index],
+                //   ),
+                //   separatorBuilder: (context, index) =>
+                //       const SizedBox(height: 10),
+                //   itemCount: nearbyHotels.length,
+                // ),
+                child: FutureBuilder<QuerySnapshot<Object?>>(
+                  future: controller.getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      var listDocs = snapshot.data!.docs;
+                      return ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => VerticalCardItem(
+                          verticalCard: HotelVerticalCard.fromMap(
+                            listDocs[index + 2].data() as Map<String, dynamic>,
+                          ),
+                          photoVertical: nearbyHotels[index],
+                        ),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 10,
+                        ),
+                        itemCount: listDocs.length - 2,
+                      );
+                    }
+                    return const Center(child: CircularProgressIndicator());
+                  },
                 ),
               ),
               //List Nearby Location

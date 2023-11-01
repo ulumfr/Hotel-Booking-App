@@ -7,17 +7,11 @@ class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
     Key? key,
     required this.horizontalCard,
-    required this.name,
-    required this.location,
-    required this.price,
-    required this.rating
+    required this.photoHorizontal,
   }) : super(key: key);
 
   final HotelHorizontalCard horizontalCard;
-  final String name;
-  final String location;
-  final String price;
-  final String rating;
+  final HotelHorizontalCardPhoto photoHorizontal;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +44,7 @@ class HorizontalCardItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(horizontalCard.photo,
+                    child: Image.asset(photoHorizontal.photo,
                         fit: BoxFit.fitHeight),
                   ),
                 ),
@@ -77,7 +71,7 @@ class HorizontalCardItem extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Text(
-              name,
+              horizontalCard.name,
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
                 fontSize: 14,
@@ -96,7 +90,7 @@ class HorizontalCardItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 Text(
-                  location,
+                  horizontalCard.location,
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontSize: 12,
@@ -112,12 +106,12 @@ class HorizontalCardItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Rating(ratingTotal: double.parse(rating)),
+                Rating(ratingTotal: (horizontalCard.rating)),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: RichText(
                     text: TextSpan(
-                      text: '${price}\$/',
+                      text: '${horizontalCard.price}\$/',
                       style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.primaryColor,
