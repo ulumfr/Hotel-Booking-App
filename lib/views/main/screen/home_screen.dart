@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/main/homescreen_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home_screen_controller.dart';
 import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
@@ -144,7 +144,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.toNamed('/webpopular');
+                        controller.goWebviewPopular();
                       },
                       child: Ink(
                         child: const Text(
@@ -182,7 +182,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                         separatorBuilder: (context, index) => const SizedBox(
                           width: 10,
                         ),
-                        itemCount: listDocs.length - 2,
+                        itemCount: listDocs.length,
                       );
                     }
                     return const Center(child: CircularProgressIndicator());
@@ -209,7 +209,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.toNamed('/webnearby');
+                        controller.goWebviewNearby();
                       },
                       child: Ink(
                         child: const Text(
@@ -229,16 +229,6 @@ class HomeScreen extends GetView<HomeScreenController> {
               //List Nearby Location
               SizedBox(
                 width: double.infinity,
-                // child: ListView.separated(
-                //   shrinkWrap: true,
-                //   physics: const NeverScrollableScrollPhysics(),
-                //   itemBuilder: (context, index) => VerticalCardItem(
-                //     verticalCard: nearbyHotels[index],
-                //   ),
-                //   separatorBuilder: (context, index) =>
-                //       const SizedBox(height: 10),
-                //   itemCount: nearbyHotels.length,
-                // ),
                 child: FutureBuilder<QuerySnapshot<Object?>>(
                   future: controller.getData(),
                   builder: (context, snapshot) {
@@ -249,14 +239,14 @@ class HomeScreen extends GetView<HomeScreenController> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => VerticalCardItem(
                           verticalCard: HotelVerticalCard.fromMap(
-                            listDocs[index + 2].data() as Map<String, dynamic>,
+                            listDocs[index].data() as Map<String, dynamic>,
                           ),
                           photoVertical: nearbyHotels[index],
                         ),
                         separatorBuilder: (context, index) => const SizedBox(
                           height: 10,
                         ),
-                        itemCount: listDocs.length - 2,
+                        itemCount: listDocs.length,
                       );
                     }
                     return const Center(child: CircularProgressIndicator());

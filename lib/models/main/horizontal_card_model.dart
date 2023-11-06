@@ -13,6 +13,12 @@ List<HotelHorizontalCardPhoto> popularHotels = [
   HotelHorizontalCardPhoto(
     photo: 'assets/images/kamar2.jpg',
   ),
+  HotelHorizontalCardPhoto(
+    photo: 'assets/images/kamar1.jpg',
+  ),
+  HotelHorizontalCardPhoto(
+    photo: 'assets/images/view7.jpg',
+  ),
 ];
 
 class HotelHorizontalCard {

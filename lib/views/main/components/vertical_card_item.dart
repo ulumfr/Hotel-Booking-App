@@ -38,7 +38,6 @@ class VerticalCardItem extends StatelessWidget {
             height: 75,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              // child: Image.asset(verticalCard.photo, fit: BoxFit.fitHeight),
               child: Image.asset(photoVertical.photo, fit: BoxFit.fitHeight),
             ),
           ),

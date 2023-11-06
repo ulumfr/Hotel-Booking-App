@@ -16,7 +16,7 @@ class ImagepickerItem extends GetView<ImagepickerController> {
           CircleAvatar(
             radius: 80,
             backgroundImage: controller.imageFile.value == null
-                ? const AssetImage("assets/images/umm.jpg") as ImageProvider
+                ? const AssetImage("assets/images/unnamed.png") as ImageProvider
                 : FileImage(File(controller.imageFile.value!.path)),
             child: InkWell(
               onTap: () {

@@ -17,7 +17,11 @@ class BottomsheetImage extends GetView<ImagepickerController> {
         children: [
           const Text(
             "Choose Profile Photo",
-            style: TextStyle(fontSize: 20.0, color: AppColors.blackColor),
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+              color: AppColors.blackColor,
+            ),
           ),
           const SizedBox(height: 20),
           Row(
