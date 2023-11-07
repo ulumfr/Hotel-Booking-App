@@ -12,12 +12,12 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.whiteColor,
         elevation: 0,
         actions: [
           TextButton(
             onPressed: () {
-              controller.skipToMainScreen();
+              controller.skipToLoginScreen();
             },
             child: const Text(
               'skip',
@@ -156,7 +156,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                   ),
                   onPressed: () {
                     if (controller.currentIndex.value == geser.length - 1) {
-                      controller.skipToMainScreen();
+                      controller.skipToLoginScreen();
                     } else {
                       controller.pageController.nextPage(
                         duration: const Duration(milliseconds: 200),

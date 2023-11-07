@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/views/main/components/imgpicker/snackbar_image.dart';
+import 'package:hotel_booking_app/views/main/components/home/imgpicker/snackbar_image.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagepickerController extends GetxController {

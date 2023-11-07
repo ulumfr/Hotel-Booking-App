@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/main/home_screen_controller.dart';
-import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
+import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
+import 'package:hotel_booking_app/views/main/components/home/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
+import 'package:hotel_booking_app/views/main/components/text_main.dart';
+import 'package:hotel_booking_app/views/main/components/text_seeall.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
@@ -21,7 +23,6 @@ class HomeScreen extends GetView<HomeScreenController> {
           padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
           child: Column(
             children: [
-              // AppBar
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -93,8 +94,6 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ),
                 ],
               ),
-              // AppBar
-
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 15),
                 child: SizedBox(
@@ -121,11 +120,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ),
                 ),
               ),
-
-              //Search Input
               const SearchTextfield(),
-              //Search Input
-
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 18,
@@ -135,33 +130,16 @@ class HomeScreen extends GetView<HomeScreenController> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Popular',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    const TextMain(labelText: "Popular"),
                     InkWell(
                       onTap: () {
                         controller.goWebviewPopular();
                       },
-                      child: Ink(
-                        child: const Text(
-                          'See All',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
+                      child: Ink(child: const TextSeeall()),
                     ),
                   ],
                 ),
               ),
-
-              // list Popular
               SizedBox(
                 height: 220,
                 width: double.infinity,
@@ -189,8 +167,6 @@ class HomeScreen extends GetView<HomeScreenController> {
                   },
                 ),
               ),
-              // list Popular
-
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 18,
@@ -200,33 +176,16 @@ class HomeScreen extends GetView<HomeScreenController> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Nearby Location',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    const TextMain(labelText: "Nearby Location"),
                     InkWell(
                       onTap: () {
                         controller.goWebviewNearby();
                       },
-                      child: Ink(
-                        child: const Text(
-                          'See All',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
+                      child: Ink(child: const TextSeeall()),
                     ),
                   ],
                 ),
               ),
-
-              //List Nearby Location
               SizedBox(
                 width: double.infinity,
                 child: FutureBuilder<QuerySnapshot<Object?>>(
@@ -253,7 +212,6 @@ class HomeScreen extends GetView<HomeScreenController> {
                   },
                 ),
               ),
-              //List Nearby Location
             ],
           ),
         ),

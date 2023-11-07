@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
-import 'package:hotel_booking_app/views/main/components/imgpicker/bottomsheet_image.dart';
+import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/main/home/imagepicker_controller.dart';
+import 'package:hotel_booking_app/views/main/components/home/imgpicker/bottomsheet_image.dart';
 
 class ImagepickerItem extends GetView<ImagepickerController> {
   const ImagepickerItem({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class ImagepickerItem extends GetView<ImagepickerController> {
                 showModalBottomSheet(
                   context: context,
                   builder: ((builder) => const BottomsheetImage()),
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.whiteColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15),

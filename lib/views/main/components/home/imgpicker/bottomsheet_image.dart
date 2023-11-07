@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/imagepicker_controller.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BottomsheetImage extends GetView<ImagepickerController> {

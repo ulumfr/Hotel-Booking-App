@@ -1,12 +1,17 @@
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/controllers/main/home_screen_controller.dart';
-import 'package:hotel_booking_app/controllers/main/imagepicker_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/imagepicker_controller.dart';
 import 'package:hotel_booking_app/controllers/main/main_screen_controller.dart';
-import 'package:hotel_booking_app/controllers/main/webviewhotel_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/webviewhotel_controller.dart';
 import 'package:hotel_booking_app/controllers/onboarding/onboarding_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/onboarding/welcome_screen_controller.dart';
-import 'package:hotel_booking_app/views/main/components/webview/webview_nearby.dart';
-import 'package:hotel_booking_app/views/main/components/webview/webview_popular.dart';
+import 'package:hotel_booking_app/views/auth/auth_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/forgot_pass_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/login_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/signup_screen.dart';
+import 'package:hotel_booking_app/views/main/components/home/webview/webview_nearby.dart';
+import 'package:hotel_booking_app/views/main/components/home/webview/webview_popular.dart';
 import 'package:hotel_booking_app/views/main/main_screen.dart';
 import 'package:hotel_booking_app/views/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/views/onboarding/welcome_screen.dart';
@@ -25,6 +30,34 @@ class AppRoutes {
       page: () => const OnboardingScreen(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => OnboardingScreenController());
+      }),
+    ),
+    GetPage(
+      name: '/login',
+      page: () => const LoginScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/signup',
+      page: () => const SignupScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/forgot',
+      page: () => const ForgotPassScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/auth',
+      page: () => const AuthScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
       }),
     ),
     GetPage(

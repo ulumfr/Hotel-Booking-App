@@ -56,7 +56,7 @@ class SearchTextfield extends StatelessWidget {
                 ),
                 child: const Icon(
                   Icons.tune_rounded,
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                 ),
               ),
             ),
