@@ -1,15 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/hbindings.dart';
 import 'package:hotel_booking_app/routes/app_pages.dart';
+import 'package:hotel_booking_app/views/main/screen/auth_controller.dart';
+import 'package:hotel_booking_app/views/main/screen/signup.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).then((value) => Get.put(AuthController()));
+  await Get.putAsync(() async => await SharedPreferences.getInstance());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,10 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return  GetMaterialApp(
       title: 'Hotel Booking',
-      initialRoute: '/welcome',
-      getPages: AppRoutes.pages,
+      home: SignUp(),
+      initialBinding: Hbindings(),
+      // initialRoute: '/welcome',
+      // getPages: AppRoutes.pages,
       debugShowCheckedModeBanner: false,
     );
   }
