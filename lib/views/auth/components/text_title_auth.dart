@@ -11,7 +11,7 @@ class TextTitleAuth extends StatelessWidget {
       style: TextStyle(
         color: AppColors.primaryColor,
         fontSize: 35,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
       ),
     );
   }

@@ -9,7 +9,9 @@ import 'package:hotel_booking_app/controllers/onboarding/welcome_screen_controll
 import 'package:hotel_booking_app/views/auth/auth_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/forgot_pass_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/login_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/reset_pass_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/signup_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/verify_forgot_screen.dart';
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_nearby.dart';
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_popular.dart';
 import 'package:hotel_booking_app/views/main/main_screen.dart';
@@ -49,6 +51,20 @@ class AppRoutes {
     GetPage(
       name: '/forgot',
       page: () => const ForgotPassScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/verify',
+      page: () => const VerifyForgotScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/reset',
+      page: () => const ResetPassScreen(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => AuthController());
       }),

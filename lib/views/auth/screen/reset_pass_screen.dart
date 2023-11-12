@@ -7,8 +7,8 @@ import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_title_auth.dart';
 
-class ForgotPassScreen extends GetView<AuthController> {
-  const ForgotPassScreen({Key? key}) : super(key: key);
+class ResetPassScreen extends GetView<AuthController> {
+  const ResetPassScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +20,19 @@ class ForgotPassScreen extends GetView<AuthController> {
               children: [
                 const SizedBox(height: 30),
                 const TextTitleAuth(),
-                const SizedBox(height: 30),
-                Image.asset("assets/images/forgotpassword.png", height: 250),
-                const SizedBox(height: 20),
+                Image.asset("assets/images/resetpassword.jpg", height: 250),
                 const Text(
-                  "Forgot Password?",
+                  "Reset Password",
                   style: TextStyle(
                     color: AppColors.textColor,
+                    fontSize: 26,
                     fontWeight: FontWeight.w500,
-                    fontSize: 23,
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 10),
                   child: Text(
-                    "Don't worry it happens. Please enter your email address",
+                    "Enter your new password and confirm it",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColors.gray3Color,
@@ -50,20 +48,30 @@ class ForgotPassScreen extends GetView<AuthController> {
                     children: [
                       const SizedBox(height: 24),
                       const TextAuth(
-                        labelText: "Email Address",
+                        labelText: "New Password",
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
-                        hintText: "enter your email",
-                        obsecureText: false,
+                        hintText: "enter your password",
+                        obsecureText: true,
+                      ),
+                      const SizedBox(height: 22),
+                      const TextAuth(
+                        labelText: "Confirm Password",
+                        fontweight: FontWeight.bold,
+                      ),
+                      const SizedBox(height: 8),
+                      const TextFieldAuth(
+                        hintText: "enter your password",
+                        obsecureText: true,
                       ),
                       const SizedBox(height: 20),
                       ButtonAuth(
                         onTap: () {
-                          controller.goVerify();
+                          controller.goLogin();
                         },
-                        labelText: "Submit",
+                        labelText: "Login",
                       ),
                     ],
                   ),

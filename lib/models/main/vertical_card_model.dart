@@ -8,16 +8,16 @@ class HotelVerticalCardPhoto {
 
 List<HotelVerticalCardPhoto> nearbyHotels = [
   HotelVerticalCardPhoto(
-    photo: 'assets/images/lobby.jpg',
+    photo: 'assets/images/vertical1.jpg',
   ),
   HotelVerticalCardPhoto(
-    photo: 'assets/images/view3.jpg',
+    photo: 'assets/images/vertical2.jpg',
   ),
   HotelVerticalCardPhoto(
-    photo: 'assets/images/view5.jpg',
+    photo: 'assets/images/vertical3.jpg',
   ),
   HotelVerticalCardPhoto(
-    photo: 'assets/images/view6.jpg',
+    photo: 'assets/images/vertical4.jpg',
   ),
 ];
 

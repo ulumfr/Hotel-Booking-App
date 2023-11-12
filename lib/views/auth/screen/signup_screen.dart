@@ -28,28 +28,40 @@ class SignupScreen extends GetView<AuthController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 24),
-                      const TextAuth(labelText: "User Name"),
+                      const TextAuth(
+                        labelText: "User Name",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: false,
                         hintText: "enter your name",
                       ),
                       const SizedBox(height: 18),
-                      const TextAuth(labelText: "Email"),
+                      const TextAuth(
+                        labelText: "Email",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: false,
                         hintText: "enter your email",
                       ),
                       const SizedBox(height: 18),
-                      const TextAuth(labelText: "Password"),
+                      const TextAuth(
+                        labelText: "Password",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: true,
                         hintText: "enter your password",
                       ),
                       const SizedBox(height: 18),
-                      const TextAuth(labelText: "Confirm Password"),
+                      const TextAuth(
+                        labelText: "Confirm Password",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: true,
@@ -60,7 +72,7 @@ class SignupScreen extends GetView<AuthController> {
                         onTap: () {
                           controller.goLogin();
                         },
-                        labelText: "Sing Up",
+                        labelText: "SingUp",
                       ),
                       const MoreAuth(),
                       const SizedBox(height: 8),

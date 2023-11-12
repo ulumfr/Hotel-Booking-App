@@ -13,6 +13,14 @@ class AuthController extends GetxController {
     Get.toNamed('/forgot');
   }
 
+  void goVerify() {
+    Get.toNamed('/verify');
+  }
+
+  void goResetPass() {
+    Get.toNamed('/reset');
+  }
+
   void goMain() {
     Get.offAndToNamed('/main');
   }

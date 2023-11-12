@@ -10,28 +10,35 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        actions: [
-          TextButton(
-            onPressed: () {
-              controller.skipToLoginScreen();
-            },
-            child: const Text(
-              'skip',
-              style: TextStyle(
-                color: AppColors.primaryColor,
-                fontSize: 17,
-                decoration: TextDecoration.underline,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.whiteColor,
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 25, top: 30),
+              child: GestureDetector(
+                onTap: () {
+                  if (controller.currentIndex.value != geser.length - 1) {
+                    controller.skipToLoginScreen();
+                  }
+                },
+                child: Text(
+                  controller.currentIndex.value == geser.length - 1
+                      ? ''
+                      : 'skip',
+                  style: const TextStyle(
+                    color: AppColors.primaryColor,
+                    fontSize: 18,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-      body: Obx(
-        () => SizedBox(
+          ],
+        ),
+        body: SizedBox(
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,
           child: Column(
@@ -55,7 +62,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                               children: [
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height: MediaQuery.sizeOf(context).height * 0.34,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     left: 150,
                                     top: 90,
@@ -74,7 +82,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                                 ),
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height: MediaQuery.sizeOf(context).height * 0.34,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     right: 150,
                                     bottom: 90,
@@ -94,6 +103,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                               ],
                             ),
                           ),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
@@ -146,7 +156,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                 child: TextButton(
                   child: Text(
                     controller.currentIndex.value == geser.length - 1
-                        ? 'Continue'
+                        ? 'Get Started'
                         : 'Next',
                     style: const TextStyle(
                       color: AppColors.gray1Color,

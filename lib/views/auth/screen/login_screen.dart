@@ -36,14 +36,20 @@ class LoginScreen extends GetView<AuthController> {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      const TextAuth(labelText: "Email"),
+                      const TextAuth(
+                        labelText: "Email",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: false,
                         hintText: "enter your email",
                       ),
                       const SizedBox(height: 22),
-                      const TextAuth(labelText: "Password"),
+                      const TextAuth(
+                        labelText: "Password",
+                        fontweight: FontWeight.w500,
+                      ),
                       const SizedBox(height: 8),
                       const TextFieldAuth(
                         obsecureText: true,

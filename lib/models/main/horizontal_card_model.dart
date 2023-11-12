@@ -8,16 +8,16 @@ class HotelHorizontalCardPhoto {
 
 List<HotelHorizontalCardPhoto> popularHotels = [
   HotelHorizontalCardPhoto(
-    photo: 'assets/images/kamar3.jpg',
+    photo: 'assets/images/horizontal1.jpg',
   ),
   HotelHorizontalCardPhoto(
-    photo: 'assets/images/kamar2.jpg',
+    photo: 'assets/images/horizontal2.jpg',
   ),
   HotelHorizontalCardPhoto(
-    photo: 'assets/images/kamar1.jpg',
+    photo: 'assets/images/horizontal3.jpg',
   ),
   HotelHorizontalCardPhoto(
-    photo: 'assets/images/view7.jpg',
+    photo: 'assets/images/horizontal4.jpg',
   ),
 ];
 
