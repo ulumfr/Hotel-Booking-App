@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
@@ -7,12 +8,9 @@ class VerticalCardItem extends StatelessWidget {
   const VerticalCardItem({
     Key? key,
     required this.verticalCard,
-    required this.photoVertical,
   }) : super(key: key);
 
   final HotelVerticalCard verticalCard;
-  final HotelVerticalCardPhoto photoVertical;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +36,11 @@ class VerticalCardItem extends StatelessWidget {
             height: 75,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(photoVertical.photo, fit: BoxFit.fitHeight),
+              child: CachedNetworkImage(
+                imageUrl: verticalCard.photo,
+                fit: BoxFit.fitHeight,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
           ),
           const SizedBox(width: 5),

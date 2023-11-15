@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
@@ -7,11 +8,9 @@ class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
     Key? key,
     required this.horizontalCard,
-    required this.photoHorizontal,
   }) : super(key: key);
 
   final HotelHorizontalCard horizontalCard;
-  final HotelHorizontalCardPhoto photoHorizontal;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +43,11 @@ class HorizontalCardItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      photoHorizontal.photo,
+                    child: CachedNetworkImage(
+                      imageUrl: horizontalCard.photo,
                       fit: BoxFit.fitHeight,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                 ),

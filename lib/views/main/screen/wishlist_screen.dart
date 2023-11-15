@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
-import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/views/main/components/text_main.dart';
@@ -62,27 +60,20 @@ class WishlistScreen extends GetView<HomeScreenController> {
                 SizedBox(
                   height: 220,
                   width: double.infinity,
-                  child: FutureBuilder<QuerySnapshot<Object?>>(
-                    future: controller.getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        var listDocs = snapshot.data!.docs;
-                        return ListView.separated(
+                  child: Obx(
+                    () {
+                      if (controller.hotelsHorizontal.isEmpty) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else {
+                        return ListView.builder(
                           clipBehavior: Clip.none,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) => HorizontalCardItem(
-                            horizontalCard: HotelHorizontalCard.fromMap(
-                              listDocs[index].data() as Map<String, dynamic>,
-                            ),
-                            photoHorizontal: popularHotels[index],
+                            horizontalCard: controller.hotelsHorizontal[index],
                           ),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
-                          itemCount: listDocs.length,
+                          itemCount: controller.hotelsHorizontal.length,
                         );
                       }
-                      return const Center(child: CircularProgressIndicator());
                     },
                   ),
                 ),
@@ -106,27 +97,20 @@ class WishlistScreen extends GetView<HomeScreenController> {
                 SizedBox(
                   height: 220,
                   width: double.infinity,
-                  child: FutureBuilder<QuerySnapshot<Object?>>(
-                    future: controller.getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        var listDocs = snapshot.data!.docs;
-                        return ListView.separated(
+                  child: Obx(
+                    () {
+                      if (controller.hotelsHorizontal.isEmpty) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else {
+                        return ListView.builder(
                           clipBehavior: Clip.none,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) => HorizontalCardItem(
-                            horizontalCard: HotelHorizontalCard.fromMap(
-                              listDocs[index].data() as Map<String, dynamic>,
-                            ),
-                            photoHorizontal: popularHotels[index],
+                            horizontalCard: controller.hotelsHorizontal[index],
                           ),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
-                          itemCount: listDocs.length,
+                          itemCount: controller.hotelsHorizontal.length,
                         );
                       }
-                      return const Center(child: CircularProgressIndicator());
                     },
                   ),
                 ),
