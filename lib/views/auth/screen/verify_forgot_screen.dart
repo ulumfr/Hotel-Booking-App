@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
-import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_otp_auth.dart';
 
 class VerifyForgotScreen extends GetView<AuthController> {
@@ -87,11 +86,27 @@ class VerifyForgotScreen extends GetView<AuthController> {
                 const SizedBox(height: 70),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 18),
-                  child: ButtonAuth(
-                    onTap: () {
-                      controller.goResetPass();
-                    },
-                    labelText: "Confirm",
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.goResetPass();
+                        },
+                        child: const Text(
+                          "Confirm",
+                          style: TextStyle(
+                            color: AppColors.gray1Color,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],

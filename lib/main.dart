@@ -1,10 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/hbindings.dart';
+import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
 import 'package:hotel_booking_app/routes/app_pages.dart';
-import 'package:hotel_booking_app/views/main/screen/auth_controller.dart';
-import 'package:hotel_booking_app/views/main/screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
@@ -13,12 +11,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.put(AuthController()));
+  ).then((value) => Get.lazyPut(() => AuthController()));
   await Get.putAsync(() async => await SharedPreferences.getInstance());
+
+  //  Get.put(AuthController());  // Register AuthController here
+  // Get.lazyPut(() => AuthController());
+
   runApp(const MyApp());
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,12 +25,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    return GetMaterialApp(
       title: 'Hotel Booking',
-      home: const SignUp(),
-      initialBinding: Hbindings(),
-      // initialRoute: '/welcome',
-      // getPages: AppRoutes.pages,
+      initialRoute: '/welcome',
+      getPages: AppRoutes.pages,
       debugShowCheckedModeBanner: false,
     );
   }

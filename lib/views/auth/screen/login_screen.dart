@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
-import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/more_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
@@ -41,7 +40,8 @@ class LoginScreen extends GetView<AuthController> {
                         fontweight: FontWeight.w500,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
+                      TextFieldAuth(
+                        controller: controller.emailController,
                         obsecureText: false,
                         hintText: "enter your email",
                       ),
@@ -51,7 +51,8 @@ class LoginScreen extends GetView<AuthController> {
                         fontweight: FontWeight.w500,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
+                      TextFieldAuth(
+                        controller: controller.passwordController,
                         obsecureText: true,
                         hintText: "enter your password",
                       ),
@@ -77,11 +78,34 @@ class LoginScreen extends GetView<AuthController> {
                         ],
                       ),
                       const SizedBox(height: 25),
-                      ButtonAuth(
-                        onTap: () {
-                          controller.goMain();
-                        },
-                        labelText: "Login",
+                      Container(
+                        width: double.infinity,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: controller.isLoading.value
+                                ? null
+                                : () {
+                                    controller.loginUser(
+                                      controller.emailController.text,
+                                      controller.passwordController.text,
+                                    );
+                                  },
+                            child: controller.isLoading.value
+                                ? const CircularProgressIndicator()
+                                : const Text(
+                                    "LogIn",
+                                    style: TextStyle(
+                                      color: AppColors.gray1Color,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                          ),
+                        ),
                       ),
                       const MoreAuth(),
                       const SizedBox(height: 8),

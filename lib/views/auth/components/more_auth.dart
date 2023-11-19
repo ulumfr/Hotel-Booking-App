@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
 
-class MoreAuth extends StatelessWidget {
+class MoreAuth extends GetView<AuthController> {
   const MoreAuth({Key? key}) : super(key: key);
 
   @override
@@ -24,15 +26,17 @@ class MoreAuth extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: () {},
+              GestureDetector(
+                onTap: () {
+                  controller.googleLogin();
+                },
                 child: Image.asset(
                   'assets/images/logo-google.png',
                   height: 26,
                 ),
               ),
               const SizedBox(width: 10),
-              InkWell(
+              GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/logo-fb.png',
@@ -40,7 +44,7 @@ class MoreAuth extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              InkWell(
+              GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/logo-apple.png',

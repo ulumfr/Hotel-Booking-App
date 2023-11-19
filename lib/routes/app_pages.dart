@@ -83,6 +83,7 @@ class AppRoutes {
         Get.lazyPut(() => MainScreenController());
         Get.lazyPut(() => ImagepickerController());
         Get.lazyPut(() => HomeScreenController());
+        Get.lazyPut(() => AuthController());
       }),
     ),
     GetPage(

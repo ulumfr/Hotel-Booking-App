@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
-import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_title_auth.dart';
@@ -52,26 +51,44 @@ class ResetPassScreen extends GetView<AuthController> {
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
+                      TextFieldAuth(
+                        controller: controller.passwordController,
                         hintText: "enter your password",
                         obsecureText: true,
                       ),
-                      const SizedBox(height: 22),
-                      const TextAuth(
-                        labelText: "Confirm Password",
-                        fontweight: FontWeight.bold,
-                      ),
-                      const SizedBox(height: 8),
-                      const TextFieldAuth(
-                        hintText: "enter your password",
-                        obsecureText: true,
-                      ),
+                      // const SizedBox(height: 22),
+                      // const TextAuth(
+                      //   labelText: "Confirm Password",
+                      //   fontweight: FontWeight.bold,
+                      // ),
+                      // const SizedBox(height: 8),
+                      // TextFieldAuth(
+                      //   controller: controller.passwordController,
+                      //   hintText: "enter your password",
+                      //   obsecureText: true,
+                      // ),
                       const SizedBox(height: 20),
-                      ButtonAuth(
-                        onTap: () {
-                          controller.goLogin();
-                        },
-                        labelText: "Login",
+                      Container(
+                        width: double.infinity,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.goLogin();
+                            },
+                            child: const Text(
+                              "LogIn",
+                              style: TextStyle(
+                                color: AppColors.gray1Color,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),

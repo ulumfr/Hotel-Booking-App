@@ -6,14 +6,17 @@ class TextFieldAuth extends StatelessWidget {
     Key? key,
     required this.hintText,
     required this.obsecureText,
+    this.controller,
   }) : super(key: key);
 
   final String hintText;
   final bool obsecureText;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       obscureText: obsecureText,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(

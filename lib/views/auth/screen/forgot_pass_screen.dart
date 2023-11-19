@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
-import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_title_auth.dart';
@@ -54,16 +53,33 @@ class ForgotPassScreen extends GetView<AuthController> {
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
+                      TextFieldAuth(
+                        controller: controller.emailController,
                         hintText: "enter your email",
                         obsecureText: false,
                       ),
                       const SizedBox(height: 20),
-                      ButtonAuth(
-                        onTap: () {
-                          controller.goVerify();
-                        },
-                        labelText: "Submit",
+                      Container(
+                        width: double.infinity,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.goVerify();
+                            },
+                            child: const Text(
+                              "Submit",
+                              style: TextStyle(
+                                color: AppColors.gray1Color,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
