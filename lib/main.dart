@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.lazyPut(() => AuthController()));
+  ).then((value) => Get.put(AuthController()));
   await Get.putAsync(() async => await SharedPreferences.getInstance());
 
   //  Get.put(AuthController());  // Register AuthController here

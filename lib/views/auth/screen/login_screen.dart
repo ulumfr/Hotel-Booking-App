@@ -78,23 +78,23 @@ class LoginScreen extends GetView<AuthController> {
                         ],
                       ),
                       const SizedBox(height: 25),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: controller.isLoading.value
-                                ? null
-                                : () {
-                                    controller.loginUser(
-                                      controller.emailController.text,
-                                      controller.passwordController.text,
-                                    );
-                                  },
+                      GestureDetector(
+                        onTap: controller.isLoading.value
+                            ? null
+                            : () {
+                          controller.loginUser(
+                            controller.emailController.text,
+                            controller.passwordController.text,
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Center(
                             child: controller.isLoading.value
                                 ? const CircularProgressIndicator()
                                 : const Text(

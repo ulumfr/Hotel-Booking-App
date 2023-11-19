@@ -84,8 +84,9 @@ class SignupScreen extends GetView<AuthController> {
                                 ? null
                                 : () {
                                     controller.registerUser(
-                                      controller.emailController.text,
-                                      controller.passwordController.text,
+                                      username: controller.nameController.text.trim(),
+                                      email: controller.emailController.text.trim(),
+                                      password: controller.passwordController.text.trim(),
                                     );
                                   },
                             child: controller.isLoading.value

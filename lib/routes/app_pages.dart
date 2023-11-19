@@ -38,36 +38,36 @@ class AppRoutes {
       name: '/login',
       page: () => const LoginScreen(),
       binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthController());
+        Get.put(() => AuthController());
       }),
     ),
     GetPage(
       name: '/signup',
       page: () => const SignupScreen(),
-      binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthController());
-      }),
+      // binding: BindingsBuilder(() {
+      //   Get.lazyPut(() => AuthController());
+      // }),
     ),
     GetPage(
       name: '/forgot',
       page: () => const ForgotPassScreen(),
-      binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthController());
-      }),
+      // binding: BindingsBuilder(() {
+      //   Get.lazyPut(() => AuthController());
+      // }),
     ),
     GetPage(
       name: '/verify',
       page: () => const VerifyForgotScreen(),
-      binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthController());
-      }),
+      // binding: BindingsBuilder(() {
+      //   Get.lazyPut(() => AuthController());
+      // }),
     ),
     GetPage(
       name: '/reset',
       page: () => const ResetPassScreen(),
-      binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthController());
-      }),
+      // binding: BindingsBuilder(() {
+      //   Get.lazyPut(() => AuthController());
+      // }),
     ),
     GetPage(
       name: '/auth',

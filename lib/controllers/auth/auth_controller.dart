@@ -7,8 +7,8 @@ import 'package:hotel_booking_app/constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hotel_booking_app/controllers/auth/user_controller.dart';
 import 'package:hotel_booking_app/views/auth/screen/forgot_pass_screen.dart';
-// import 'package:hotel_booking_app/views/auth/screen/login_screen.dart';
-// import 'package:hotel_booking_app/views/main/main_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/login_screen.dart';
+import 'package:hotel_booking_app/views/main/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
@@ -32,7 +32,7 @@ class AuthController extends GetxController {
     super.onReady();
     _user = Rx<User?>(auth.currentUser);
     _user.bindStream(auth.userChanges());
-    // ever(_user, _initialScreen);
+    ever(_user, _initialScreen);
   }
 
   @override
@@ -42,16 +42,18 @@ class AuthController extends GetxController {
     super.dispose();
   }
 
-  // _initialScreen(User? user){
-  //   if(user == null){
-  //     debugPrint("Login");
-  //     Get.offAll(() => const LoginScreen());
-  //   } else {
-  //     Get.offAll(() => const MainScreen());
-  //   }
-  // }
+  _initialScreen(User? user){
+    if(user == null){
+      debugPrint("Login");
+      Get.offAllNamed('/login');
+      // Get.offAll(() => const LoginScreen());
+    } else {
+      Get.offAllNamed('/main');
+      // Get.offAll(() => const MainScreen());
+    }
+  }
 
-  Future<void> registerUser(String email, String password) async {
+  Future<void> registerUser({String? username, required String email,required String password}) async {
     try {
       isLoading.value = true;
       await auth.createUserWithEmailAndPassword(
@@ -60,6 +62,7 @@ class AuthController extends GetxController {
       );
       final user = userController.addUser(
         auth.currentUser!.uid,
+        username,
         email,
         password,
       );
@@ -194,7 +197,7 @@ class AuthController extends GetxController {
 
   void verifyOTP(String otp) async {
     if (await emailOTP.verifyOTP(otp: otp) == true) {
-      registerUser(prefs.getString('email')!, prefs.getString('password')!);
+      registerUser(email: prefs.getString('email')!,password: prefs.getString('password')!);
       prefs.remove('email');
       prefs.remove('password');
     }
