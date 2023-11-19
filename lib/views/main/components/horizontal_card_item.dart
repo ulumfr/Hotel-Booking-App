@@ -1,36 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/rating.dart';
 
 class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
     Key? key,
-<<<<<<< Updated upstream
-    required this.name,
-    required this.location,
-    required this.photo,
-    required this.price,
-    required this.rating,
-=======
     required this.horizontalCard,
     required this.name,
     required this.location,
     required this.price,
     required this.rating
->>>>>>> Stashed changes
   }) : super(key: key);
 
+  final HotelHorizontalCard horizontalCard;
   final String name;
   final String location;
-<<<<<<< Updated upstream
-  final String photo;
   final String price;
   final double rating;
-=======
-  final String price;
-  final String rating;
-  final HotelHorizontalCard horizontalCard;
->>>>>>> Stashed changes
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +50,8 @@ class HorizontalCardItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(photo, fit: BoxFit.fitHeight),
+                    child: Image.asset(horizontalCard.photo,
+                        fit: BoxFit.fitHeight),
                   ),
                 ),
                 Positioned(
@@ -124,20 +112,12 @@ class HorizontalCardItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-<<<<<<< Updated upstream
                 Rating(ratingTotal: rating),
-=======
-                Rating(ratingTotal: double.parse(rating)),
->>>>>>> Stashed changes
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: RichText(
                     text: TextSpan(
-<<<<<<< Updated upstream
                       text: '$price\$/',
-=======
-                      text: '${price}\$/',
->>>>>>> Stashed changes
                       style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.primaryColor,

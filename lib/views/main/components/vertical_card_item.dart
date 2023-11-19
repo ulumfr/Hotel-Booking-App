@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 import 'package:hotel_booking_app/views/main/components/rating.dart';
 
 class VerticalCardItem extends StatelessWidget {
   const VerticalCardItem({
     Key? key,
-    required this.name,
-    required this.location,
-    required this.photo,
-    required this.price,
-    required this.rating,
+    required this.verticalCard,
   }) : super(key: key);
 
-  final String name;
-  final String location;
-  final String photo;
-  final String price;
-  final double rating;
+  final HotelVerticalCard verticalCard;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +36,7 @@ class VerticalCardItem extends StatelessWidget {
             height: 75,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(photo, fit: BoxFit.fitHeight),
+              child: Image.asset(verticalCard.photo, fit: BoxFit.fitHeight),
             ),
           ),
           const SizedBox(width: 5),
@@ -63,7 +56,7 @@ class VerticalCardItem extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: Text(
-                                name,
+                                verticalCard.name,
                                 style: const TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
@@ -81,7 +74,7 @@ class VerticalCardItem extends StatelessWidget {
                                     color: AppColors.secondaryColor,
                                   ),
                                   Text(
-                                    location,
+                                    verticalCard.location,
                                     style: const TextStyle(
                                       fontSize: 12,
                                       overflow: TextOverflow.ellipsis,
@@ -118,12 +111,12 @@ class VerticalCardItem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Rating(ratingTotal: rating),
+                      Rating(ratingTotal: verticalCard.rating),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: RichText(
                           text: TextSpan(
-                            text: '$price\$/',
+                            text: '${verticalCard.price}\$/',
                             style: const TextStyle(
                               fontSize: 14,
                               color: AppColors.primaryColor,

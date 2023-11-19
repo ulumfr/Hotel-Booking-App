@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/main/homescreen_controller.dart';
 import 'package:hotel_booking_app/views/main/components/imgpicker/imagepicker_item.dart';
@@ -142,7 +143,9 @@ class HomeScreen extends GetView<HomeScreenController> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/webpopular');
+                      },
                       child: Ink(
                         child: const Text(
                           'See All',
@@ -162,46 +165,29 @@ class HomeScreen extends GetView<HomeScreenController> {
               SizedBox(
                 height: 220,
                 width: double.infinity,
-<<<<<<< Updated upstream
-                child: ListView.separated(
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => HorizontalCardItem(
-                    name: popularHotels[index].name,
-                    location: popularHotels[index].location,
-                    photo: popularHotels[index].photo,
-                    price: popularHotels[index].price,
-                    rating: popularHotels[index].rating,
-                  ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    width: 10,
-                  ),
-                  itemCount: popularHotels.length,
-=======
                 child: FutureBuilder<QuerySnapshot<Object?>>(
-                  future: controller.getData(),
-                  builder: (context, snapshot) {
-                    if(snapshot.connectionState == ConnectionState.done){
-                      var listDocs = snapshot.data!.docs;
-                      return ListView.separated(
-                        clipBehavior: Clip.none,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => HorizontalCardItem(
-                          horizontalCard: popularHotels[index],
-                          name: (listDocs[index].data() as Map<String,dynamic>)["name"],
-                          location: (listDocs[index].data() as Map<String,dynamic>)["location"],
-                          price: (listDocs[index].data() as Map<String,dynamic>)["price"],
-                          rating: (listDocs[index].data() as Map<String,dynamic>)["rating"],
-                        ),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 10,
-                        ),
-                        itemCount: listDocs.length-2,
-                      );
+                    future: controller.getData(),
+                    builder: (context, snapshot) {
+                      if(snapshot.connectionState == ConnectionState.done){
+                        var listDocs = snapshot.data!.docs;
+                        return ListView.separated(
+                          clipBehavior: Clip.none,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => HorizontalCardItem(
+                            horizontalCard: popularHotels[index],
+                            name: (listDocs[index].data() as Map<String,dynamic>)["name"],
+                            location: (listDocs[index].data() as Map<String,dynamic>)["location"],
+                            price: (listDocs[index].data() as Map<String,dynamic>)["price"],
+                            rating: (listDocs[index].data() as Map<String,dynamic>)["rating"],
+                          ),
+                          separatorBuilder: (context, index) => const SizedBox(
+                            width: 10,
+                          ),
+                          itemCount: listDocs.length-2,
+                        );
+                      }
+                      return const Center(child: CircularProgressIndicator());
                     }
-                    return Center(child: CircularProgressIndicator());
-                  }
->>>>>>> Stashed changes
                 ),
               ),
               // list Popular
@@ -223,7 +209,9 @@ class HomeScreen extends GetView<HomeScreenController> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/webnearby');
+                      },
                       child: Ink(
                         child: const Text(
                           'See All',
@@ -246,11 +234,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => VerticalCardItem(
-                    name: nearbyHotels[index].name,
-                    location: nearbyHotels[index].location,
-                    photo: nearbyHotels[index].photo,
-                    price: nearbyHotels[index].price,
-                    rating: nearbyHotels[index].rating,
+                    verticalCard: nearbyHotels[index],
                   ),
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 10),
