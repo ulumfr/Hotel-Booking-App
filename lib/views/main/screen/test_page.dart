@@ -26,6 +26,7 @@ class Testing extends StatelessWidget {
                 decoration: const BoxDecoration(
                   color: Colors.yellow
                 ),
+                child: const Text("LogOut"),
               ),
             )
           ],

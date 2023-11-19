@@ -7,8 +7,6 @@ class SignUp extends GetView<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -16,32 +14,33 @@ class SignUp extends GetView<HomeScreenController> {
         child: Column(
           children: [
             TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                hintText: "email",
-                hintStyle: TextStyle(
-                  fontSize: 20
-                )
-              ),
-            ),
-            const SizedBox(height: 15),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                  hintText: "Password",
+                controller: controller.emailController,
+                decoration: const InputDecoration(
+                  hintText: "email",
                   hintStyle: TextStyle(
-                      fontSize: 20
+                    fontSize: 20
                   )
+                ),
               ),
-            ),
+            const SizedBox(height: 15),
+        TextFormField(
+                controller: controller.passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                    hintText: "Password",
+                    hintStyle: TextStyle(
+                        fontSize: 20
+                    )
+                ),
+              ),
             const SizedBox(height: 15),
             Row(
               children: [
                 GestureDetector(
-                  onTap: (){
-                    controller.user.register(emailController.text.trim(), passwordController.text.trim());
-
+                  onTap: () async {
+                    if(await controller.user.sendOTP(controller.emailController.text.trim(), controller.passwordController.text.trim())){
+                      controller.clear();
+                    }
                   },
                   child: Container(
                     width: 100,
@@ -55,7 +54,8 @@ class SignUp extends GetView<HomeScreenController> {
                 const SizedBox(width: 15),
                 GestureDetector(
                   onTap: (){
-                    controller.user.login(emailController.text.trim(), passwordController.text.trim());
+                    controller.user.login(controller.emailController.text.trim(), controller.passwordController.text.trim());
+                    controller.clear();
                     },
                   child: Container(
                     width: 100,
