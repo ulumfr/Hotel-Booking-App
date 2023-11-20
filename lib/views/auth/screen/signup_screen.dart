@@ -59,36 +59,40 @@ class SignupScreen extends GetView<AuthController> {
                         obsecureText: true,
                         hintText: "enter your password",
                       ),
-                      // const SizedBox(height: 18),
-                      // const TextAuth(
-                      //   labelText: "Confirm Password",
-                      //   fontweight: FontWeight.w500,
-                      // ),
-                      // const SizedBox(height: 8),
-                      // TextFieldAuth(
-                      //   controller: controller.emailController,
-                      //   obsecureText: true,
-                      //   hintText: "enter your password",
-                      // ),
+                      const SizedBox(height: 18),
+                      const TextAuth(
+                        labelText: "Confirm Password",
+                        fontweight: FontWeight.w500,
+                      ),
+                      const SizedBox(height: 8),
+                      TextFieldAuth(
+                        controller: controller.confPasswordController,
+                        obsecureText: true,
+                        hintText: "enter your confirm password",
+                      ),
                       const SizedBox(height: 25),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: controller.isLoading.value
-                                ? null
-                                : () {
-                                    controller.registerUser(
-                                      username: controller.nameController.text.trim(),
-                                      email: controller.emailController.text.trim(),
-                                      password: controller.passwordController.text.trim(),
-                                    );
-                                  },
+                      GestureDetector(
+                        onTap: controller.isLoading.value
+                            ? null
+                            : () {
+                                controller.registerUser(
+                                  username:
+                                      controller.nameController.text.trim(),
+                                  email: controller.emailController.text.trim(),
+                                  password:
+                                      controller.passwordController.text.trim(),
+                                  confPassword:
+                                      controller.confPasswordController.text.trim(),
+                                );
+                              },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Center(
                             child: controller.isLoading.value
                                 ? const CircularProgressIndicator()
                                 : const Text(

@@ -13,7 +13,7 @@ class MainScreen extends GetView<MainScreenController> {
   @override
   Widget build(BuildContext context) {
     List<Widget> listWidgetMain = [
-      const HomeScreen(),
+      HomeScreen(),
       const BookingScreen(),
       const WishlistScreen(),
       const ProfileScreen(),

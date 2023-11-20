@@ -38,7 +38,8 @@ class AppRoutes {
       name: '/login',
       page: () => const LoginScreen(),
       binding: BindingsBuilder(() {
-        Get.put(() => AuthController());
+        // Get.lazyPut(() => AuthController());
+        Get.put(AuthController());
       }),
     ),
     GetPage(
@@ -83,7 +84,6 @@ class AppRoutes {
         Get.lazyPut(() => MainScreenController());
         Get.lazyPut(() => ImagepickerController());
         Get.lazyPut(() => HomeScreenController());
-        Get.lazyPut(() => AuthController());
       }),
     ),
     GetPage(

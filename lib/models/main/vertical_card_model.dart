@@ -1,7 +1,7 @@
 class HotelVerticalCard {
   String name;
   String location;
-  double price;
+  int price;
   double rating;
   String photo;
 
@@ -17,7 +17,7 @@ class HotelVerticalCard {
     return HotelVerticalCard(
       name: data["name"] ?? "",
       location: data["location"] ?? "",
-      price: data["price"] != null ? double.parse(data["price"].toString()) : 0.0,
+      price: data["price"] ?? "",
       rating: data["rating"] != null ? double.parse(data["rating"].toString()) : 0.0,
       photo: data["photo"] ?? "",
     );

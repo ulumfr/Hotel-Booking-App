@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
@@ -10,7 +11,9 @@ import 'package:hotel_booking_app/views/main/components/text_seeall.dart';
 import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final isloginUser = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +34,23 @@ class HomeScreen extends GetView<HomeScreenController> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const Expanded(
+                  Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 12),
+                          padding: const EdgeInsets.only(top: 12),
                           child: Text(
-                            'Welcome, Ulum',
-                            style: TextStyle(
+                            'Welcome, ${isloginUser.email!}' ,
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.location_on_outlined,
