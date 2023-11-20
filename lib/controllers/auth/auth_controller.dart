@@ -41,10 +41,10 @@ class AuthController extends GetxController {
   _initialScreen(User? user) {
     if (user == null) {
       debugPrint("Login");
-      Get.offAllNamed('/login');
+      Get.offAndToNamed('/welcome');
       // Get.offAll(() => const LoginScreen());
     } else {
-      Get.offAllNamed('/main');
+      Get.offAndToNamed('/main');
       // Get.offAll(() => const MainScreen());
     }
   }

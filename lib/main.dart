@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Hotel Booking',
-      initialRoute: '/welcome',
+      home: const CircularProgressIndicator(),
+      // initialRoute: '/welcome',
       getPages: AppRoutes.pages,
       debugShowCheckedModeBanner: false,
     );

@@ -1,13 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/models/auth/user_model.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 
 class HomeScreenController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
-
+  RxList<Users> user = <Users>[].obs;
   RxList<HotelHorizontalCard> hotelsHorizontal = <HotelHorizontalCard>[].obs;
   RxList<HotelVerticalCard> hotelsVertical = <HotelVerticalCard>[].obs;
 
@@ -15,7 +17,25 @@ class HomeScreenController extends GetxController {
   void onInit() {
     super.onInit();
     getData();
+    // getUser();
   }
+
+  // Future<void> getUser() async {
+  //   final curUser = FirebaseAuth.instance.currentUser!;
+  //   var userDetails = firestore.collection("Users").doc(curUser.uid).get();
+  //     // DocumentSnapshot userSnapshot = await userDetails.get();
+  //
+  //   user.add(userDetails as Users);
+  //     // if(userSnapshot.exists){
+  //     //   final userModel = userSnapshot.fr
+  //     //   user.add(Users.fromJson({
+  //     //     "email": userSnapshot?.data()["email"],
+  //     //     "id": userSnapshot["id"],
+  //     //     "password": userSnapshot["password"],
+  //     //     "username": userSnapshot["username"]
+  //     //   }));
+  //     // }
+  // }
 
   Future<void> getData() async {
     CollectionReference details = firestore.collection("hotel_details");
