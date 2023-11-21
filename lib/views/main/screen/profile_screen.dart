@@ -39,27 +39,55 @@ class ProfileScreen extends GetView<AuthController> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(
+              right: 20,
+              left: 20,
+              top: 50,
+            ),
             child: Column(
               children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: const Image(
-                      image: AssetImage('assets/images/profile.png'),
+                Stack(
+                  alignment: AlignmentDirectional.center,
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 130,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(17),
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/background-profile.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 13),
-                const Text(
-                  "Bahrul Ulum",
-                  style: TextStyle(
-                    color: AppColors.blackColor,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                  ),
+                    Positioned(
+                      top: -35,
+                      child: SizedBox(
+                        width: 90,
+                        height: 90,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: const Image(
+                            image: AssetImage('assets/images/profile.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 60,
+                      child: Text(
+                        "Bahrul Ulum",
+                        style: TextStyle(
+                          color: AppColors.whiteColor,
+                          fontSize: 23,
+                          letterSpacing: 1.3,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 25),
                 ProfileListItem(
