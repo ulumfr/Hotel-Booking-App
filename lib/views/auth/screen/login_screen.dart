@@ -53,7 +53,7 @@ class LoginScreen extends GetView<AuthController> {
                       const SizedBox(height: 8),
                       TextFieldAuth(
                         controller: controller.passwordController,
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                         hintText: "enter your password",
                       ),
                       Row(
@@ -82,11 +82,11 @@ class LoginScreen extends GetView<AuthController> {
                         onTap: controller.isLoading.value
                             ? null
                             : () {
-                          controller.loginUser(
-                            controller.emailController.text,
-                            controller.passwordController.text,
-                          );
-                        },
+                                controller.loginUser(
+                                  controller.emailController.text,
+                                  controller.passwordController.text,
+                                );
+                              },
                         child: Container(
                           width: double.infinity,
                           height: 50,

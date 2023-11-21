@@ -22,7 +22,8 @@ class AuthController extends GetxController {
   final TextEditingController confPasswordController = TextEditingController();
 
   RxBool isLoading = false.obs;
-
+  bool isSecure = true;
+  
   @override
   void onReady() {
     super.onReady();

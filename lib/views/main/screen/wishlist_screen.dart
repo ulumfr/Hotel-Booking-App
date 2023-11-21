@@ -17,9 +17,10 @@ class WishlistScreen extends GetView<HomeScreenController> {
         backgroundColor: AppColors.whiteColor,
         elevation: 0,
         centerTitle: true,
-        leading: const BackButton(
-          color: AppColors.blackColor,
-        ),
+        // leading: BackButton(
+        //   color: AppColors.blackColor,
+        //   onPressed: () {},
+        // ),
         title: const Text(
           "Wish List",
           style: TextStyle(

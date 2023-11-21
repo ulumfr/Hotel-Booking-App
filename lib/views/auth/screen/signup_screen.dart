@@ -56,7 +56,7 @@ class SignupScreen extends GetView<AuthController> {
                       const SizedBox(height: 8),
                       TextFieldAuth(
                         controller: controller.passwordController,
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                         hintText: "enter your password",
                       ),
                       const SizedBox(height: 18),
@@ -67,7 +67,7 @@ class SignupScreen extends GetView<AuthController> {
                       const SizedBox(height: 8),
                       TextFieldAuth(
                         controller: controller.confPasswordController,
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                         hintText: "enter your confirm password",
                       ),
                       const SizedBox(height: 25),
