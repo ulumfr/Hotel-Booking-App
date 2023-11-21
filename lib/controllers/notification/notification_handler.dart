@@ -9,6 +9,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 class FirebaseMessagingHandler {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
+  void subscribe() async {
+    print('subscribe to topic on each app start-up');
+    await _firebaseMessaging.subscribeToTopic('notification');
+  }
   final _androidChannel = const AndroidNotificationChannel(
     'channel_notification',
     'High Importance Notification',

@@ -15,33 +15,33 @@ class ProfileListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 55,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(17),
-        border: Border.all(color: AppColors.gray2Color, width: 2),
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Icon(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 55,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(17),
+          border: Border.all(color: AppColors.gray2Color, width: 2),
+        ),
+        child: Row(
+          children: [
+            Icon(
               icon,
               color: AppColors.primaryColor,
             ),
-          ),
-          const SizedBox(width: 20),
-          Text(
-            text,
-            style: const TextStyle(
-              color: AppColors.blackColor,
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          )
-        ],
+            const SizedBox(width: 20),
+            Text(
+              text,
+              style: const TextStyle(
+                color: AppColors.blackColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -5,12 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hotel_booking_app/controllers/auth/user_controller.dart';
+import 'package:hotel_booking_app/controllers/notification/notification_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final GoogleSignIn google = GoogleSignIn();
+  final notification = Get.put(FirebaseMessagingHandler());
 
   late Rx<User?> _user;
   final userController = Get.put(UserController());
@@ -30,6 +32,10 @@ class AuthController extends GetxController {
     _user = Rx<User?>(auth.currentUser);
     _user.bindStream(auth.userChanges());
     ever(_user, _initialScreen);
+  }
+
+  void clickNotification () {
+    notification.subscribe();
   }
 
   @override

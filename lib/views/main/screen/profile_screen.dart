@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/notification/notification_handler.dart';
 import 'package:hotel_booking_app/views/main/components/profile/profile_list_item.dart';
 
 class ProfileScreen extends GetView<AuthController> {
@@ -9,6 +10,7 @@ class ProfileScreen extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+    // Get.find(FirebaseMessagingHandler());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
@@ -97,7 +99,9 @@ class ProfileScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 25),
                 ProfileListItem(
-                  onTap: () {},
+                  onTap: () {
+                    controller.clickNotification();
+                  },
                   icon: Icons.notifications,
                   text: "Notification",
                 ),
