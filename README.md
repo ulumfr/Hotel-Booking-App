@@ -14,6 +14,6 @@ Slicing the application design from https://www.behance.net/gallery/175409295/Ho
 ## References
 
 - Modul 4
-> [AUTH (video)](https://www.youtube.com/watch?v=W_n_koagDNI)
-> [email OTP](https://pub.dev/packages/email_otp) / [email OTP (Video)](https://www.youtube.com/watch?v=HO37UT1Fh28)
-> [Firebase Messaging](https://firebase.flutter.dev/docs/messaging/usage)
+    - [AUTH (Video)](https://www.youtube.com/watch?v=W_n_koagDNI)
+    - [Email OTP](https://pub.dev/packages/email_otp) / [Email OTP (Video)](https://www.youtube.com/watch?v=HO37UT1Fh28)
+    - [Firebase Messaging](https://firebase.flutter.dev/docs/messaging/usage)
