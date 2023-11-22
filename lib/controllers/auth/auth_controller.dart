@@ -64,6 +64,9 @@ class AuthController extends GetxController {
   }) async {
     try {
       isLoading.value = true;
+      if(confPasswordController.text != passwordController.text){
+        Get.snackbar("Error", "password doesn't match");
+      }
       await auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,

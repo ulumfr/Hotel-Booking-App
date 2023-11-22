@@ -17,6 +17,7 @@ class HomeScreen extends GetView<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -42,7 +43,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                         Padding(
                           padding: const EdgeInsets.only(top: 12),
                           child: Text(
-                            'Welcome, ${isloginUser.email!}' ,
+                            'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,

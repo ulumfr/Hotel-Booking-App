@@ -16,7 +16,7 @@ class MainScreen extends GetView<MainScreenController> {
       HomeScreen(),
       const BookingScreen(),
       const WishlistScreen(),
-      const ProfileScreen(),
+      ProfileScreen(),
     ];
 
     return Scaffold(

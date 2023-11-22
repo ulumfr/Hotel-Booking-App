@@ -1,12 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
-import 'package:hotel_booking_app/controllers/notification/notification_handler.dart';
 import 'package:hotel_booking_app/views/main/components/profile/profile_list_item.dart';
 
 class ProfileScreen extends GetView<AuthController> {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
+  final isloginUser = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +78,11 @@ class ProfileScreen extends GetView<AuthController> {
                         ),
                       ),
                     ),
-                    const Positioned(
+                    Positioned(
                       top: 60,
                       child: Text(
-                        "Bahrul Ulum",
-                        style: TextStyle(
+                        '${isloginUser.displayName ?? isloginUser.email}',
+                        style: const TextStyle(
                           color: AppColors.whiteColor,
                           fontSize: 23,
                           letterSpacing: 1.3,
