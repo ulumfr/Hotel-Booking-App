@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/models/auth/user_model.dart';
+// import 'package:hotel_booking_app/models/auth/user_model.dart';
 import 'package:hotel_booking_app/models/main/horizontal_card_model.dart';
 import 'package:hotel_booking_app/models/main/vertical_card_model.dart';
 

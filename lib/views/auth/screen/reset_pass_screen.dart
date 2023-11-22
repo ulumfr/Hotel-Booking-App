@@ -12,6 +12,7 @@ class ResetPassScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.gray1Color,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -54,33 +55,33 @@ class ResetPassScreen extends GetView<AuthController> {
                       TextFieldAuth(
                         controller: controller.passwordController,
                         hintText: "enter your password",
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                       ),
-                      // const SizedBox(height: 22),
-                      // const TextAuth(
-                      //   labelText: "Confirm Password",
-                      //   fontweight: FontWeight.bold,
-                      // ),
-                      // const SizedBox(height: 8),
-                      // TextFieldAuth(
-                      //   controller: controller.passwordController,
-                      //   hintText: "enter your password",
-                      //   obsecureText: true,
-                      // ),
+                      const SizedBox(height: 22),
+                      const TextAuth(
+                        labelText: "Confirm Password",
+                        fontweight: FontWeight.bold,
+                      ),
+                      const SizedBox(height: 8),
+                      TextFieldAuth(
+                        controller: controller.confPasswordController,
+                        hintText: "enter your confirm password",
+                        obsecureText: controller.isSecure,
+                      ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.goLogin();
-                            },
-                            child: const Text(
+                      GestureDetector(
+                        onTap: () {
+                          controller.goLogin();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
                               "LogIn",
                               style: TextStyle(
                                 color: AppColors.gray1Color,

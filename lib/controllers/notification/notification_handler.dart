@@ -23,7 +23,6 @@ class FirebaseMessagingHandler {
   final _localNotification = FlutterLocalNotificationsPlugin();
 
   Future<void> initPushNotification() async {
-    // Allow the user to give permission for notification
     NotificationSettings settings = await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: false,
@@ -35,12 +34,10 @@ class FirebaseMessagingHandler {
     );
     print('User granted permission: ${settings.authorizationStatus}');
 
-    // Get FCM token
     _firebaseMessaging.getToken().then((token) {
       print('FCM Token: $token');
     });
 
-    // Handler for terminated message
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       if (message != null && message.notification != null) {
         print("terminatedNotification : ${message.notification?.title}");
@@ -49,10 +46,8 @@ class FirebaseMessagingHandler {
       }
     });
 
-    // Handler for onBackground message
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    // Handler for foreground message with local notification
     FirebaseMessaging.onMessage.listen((message) {
       final notification = message.notification;
       if (notification == null) return;
@@ -72,11 +67,9 @@ class FirebaseMessagingHandler {
         payload: jsonEncode(message.toMap()),
       );
 
-      print(
-          'Message received while app is in foreground: ${message.notification?.title}');
+      print('Message received while app is in foreground: ${message.notification?.title}');
     });
 
-    // Handler for when opening the message
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('Message opened from notification: ${message.notification?.title}');
     });

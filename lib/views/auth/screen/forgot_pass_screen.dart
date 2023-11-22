@@ -12,6 +12,7 @@ class ForgotPassScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.gray1Color,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -59,19 +60,19 @@ class ForgotPassScreen extends GetView<AuthController> {
                         obsecureText: false,
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.goVerify();
-                            },
-                            child: const Text(
+                      GestureDetector(
+                        onTap: () {
+                          controller.goVerify();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
                               "Submit",
                               style: TextStyle(
                                 color: AppColors.gray1Color,

@@ -13,23 +13,6 @@ class WishlistScreen extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        centerTitle: true,
-        // leading: BackButton(
-        //   color: AppColors.blackColor,
-        //   onPressed: () {},
-        // ),
-        title: const Text(
-          "Wish List",
-          style: TextStyle(
-            color: AppColors.blackColor,
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -40,10 +23,23 @@ class WishlistScreen extends GetView<HomeScreenController> {
             ),
             child: Column(
               children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 15, bottom: 30),
+                  child: Center(
+                    child: Text(
+                      "Wish List",
+                      style: TextStyle(
+                        color: AppColors.blackColor,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
                 const SearchTextfield(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 18,
+                    vertical: 20,
                     horizontal: 10,
                   ),
                   child: Row(
@@ -80,7 +76,7 @@ class WishlistScreen extends GetView<HomeScreenController> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 18,
+                    vertical: 20,
                     horizontal: 10,
                   ),
                   child: Row(

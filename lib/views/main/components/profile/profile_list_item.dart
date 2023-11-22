@@ -19,7 +19,6 @@ class ProfileListItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 55,
-        margin: const EdgeInsets.symmetric(horizontal: 10),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17),

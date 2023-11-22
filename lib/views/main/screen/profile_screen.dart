@@ -11,132 +11,146 @@ class ProfileScreen extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    // Get.find(FirebaseMessagingHandler());
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        centerTitle: true,
-        // leading: BackButton(
-        //   color: AppColors.blackColor,
-        //   onTap: () {},
-        // ),
-        title: const Text(
-          "Profile",
-          style: TextStyle(
-            color: AppColors.blackColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 25,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.settings,
-              color: AppColors.primaryColor,
-            ),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.only(
-              right: 20,
-              left: 20,
-              top: 50,
+              left: 15,
+              right: 15,
+              top: 15,
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Stack(
-                  alignment: AlignmentDirectional.center,
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 130,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(17),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/background-profile.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: -35,
-                      child: SizedBox(
-                        width: 90,
-                        height: 90,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: const Image(
-                            image: AssetImage('assets/images/profile.png'),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                    bottom: 30,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          "Profile",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColors.blackColor,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 60,
-                      child: Text(
-                        '${isloginUser.displayName ?? isloginUser.email}',
-                        style: const TextStyle(
-                          color: AppColors.whiteColor,
-                          fontSize: 23,
-                          letterSpacing: 1.3,
-                          fontWeight: FontWeight.w400,
+                      GestureDetector(
+                        onTap: () {},
+                        child: const Icon(
+                          Icons.settings,
+                          color: AppColors.primaryColor,
                         ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Column(
+                    children: [
+                      Stack(
+                        alignment: AlignmentDirectional.center,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            height: 130,
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryColor,
+                              borderRadius: BorderRadius.circular(17),
+                              image: const DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/background-profile.jpg"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: -35,
+                            child: SizedBox(
+                              width: 85,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: const Image(
+                                  image:
+                                      AssetImage("assets/images/profile.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 65,
+                            child: Text(
+                              '${isloginUser.displayName ?? isloginUser.email}',
+                              style: const TextStyle(
+                                color: AppColors.whiteColor,
+                                fontSize: 23,
+                                letterSpacing: 1,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {},
-                  icon: Icons.edit,
-                  text: "Edit Profile",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {
-                    controller.clickNotification();
-                  },
-                  icon: Icons.notifications,
-                  text: "Notification",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {},
-                  icon: Icons.toggle_on_outlined,
-                  text: "Dark Mode",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {},
-                  icon: Icons.card_giftcard,
-                  text: "Voucher",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {},
-                  icon: Icons.credit_card,
-                  text: "Cards and Payment",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {},
-                  icon: Icons.headset_mic,
-                  text: "Customer Service",
-                ),
-                const SizedBox(height: 25),
-                ProfileListItem(
-                  onTap: () {
-                    controller.logout();
-                  },
-                  icon: Icons.exit_to_app,
-                  text: "Logout",
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {},
+                        icon: Icons.edit,
+                        text: "Edit Profile",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {
+                          controller.clickNotification();
+                        },
+                        icon: Icons.notifications,
+                        text: "Notification",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {},
+                        icon: Icons.toggle_on_outlined,
+                        text: "Dark Mode",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {},
+                        icon: Icons.card_giftcard,
+                        text: "Voucher",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {},
+                        icon: Icons.credit_card,
+                        text: "Cards and Payment",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {},
+                        icon: Icons.headset_mic,
+                        text: "Customer Service",
+                      ),
+                      const SizedBox(height: 20),
+                      ProfileListItem(
+                        onTap: () {
+                          controller.logout();
+                        },
+                        icon: Icons.exit_to_app,
+                        text: "Logout",
+                      ),
+                      const SizedBox(height: 15),
+                    ],
+                  ),
                 ),
               ],
             ),

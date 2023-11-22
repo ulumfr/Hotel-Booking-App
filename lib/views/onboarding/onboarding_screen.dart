@@ -13,7 +13,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.whiteColor,
+          backgroundColor: AppColors.gray1Color,
           elevation: 0,
           actions: [
             Padding(
@@ -38,6 +38,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
             ),
           ],
         ),
+        backgroundColor: AppColors.gray1Color,
         body: SizedBox(
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,

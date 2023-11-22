@@ -11,11 +11,11 @@ class VerifyForgotScreen extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.gray1Color,
         centerTitle: true,
         leading: const BackButton(
           color: AppColors.blackColor,
         ),
-        backgroundColor: AppColors.whiteColor,
         elevation: 0,
         title: const Text(
           "Forget Password",
@@ -26,6 +26,7 @@ class VerifyForgotScreen extends GetView<AuthController> {
           ),
         ),
       ),
+      backgroundColor: AppColors.gray1Color,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -86,19 +87,19 @@ class VerifyForgotScreen extends GetView<AuthController> {
                 const SizedBox(height: 70),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 18),
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.goResetPass();
-                        },
-                        child: const Text(
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.goResetPass();
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Center(
+                        child: Text(
                           "Confirm",
                           style: TextStyle(
                             color: AppColors.gray1Color,

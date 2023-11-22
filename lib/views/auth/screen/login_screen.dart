@@ -13,6 +13,7 @@ class LoginScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.gray1Color,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

@@ -20,6 +20,7 @@ class MainScreen extends GetView<MainScreenController> {
     ];
 
     return Scaffold(
+      backgroundColor: AppColors.gray1Color,
       body: Obx(() => listWidgetMain[controller.indexMainScreen.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
