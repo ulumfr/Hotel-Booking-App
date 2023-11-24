@@ -16,7 +16,7 @@ class UserController extends GetxController {
 
   createUser(Users user) async {
     await dbUsers
-        .collection('Users')
+        .collection('users')
         .add(user.toJson())
         .whenComplete(() => null);
   }

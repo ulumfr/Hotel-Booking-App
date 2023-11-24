@@ -24,14 +24,4 @@ class Users {
         "email": email,
         "password": password,
       };
-
-  // factory Users.fromJson(DocumentSnapshot<Map<String, dynamic>> json) {
-  //   final data = json.data();
-  //   return Users(
-  //     docId: json.id,
-  //     id: data?["id"],
-  //     username: data?["username"],
-  //     email: data?["email"],
-  //     password: data?["password"],
-  //   );}
 }

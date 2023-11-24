@@ -25,7 +25,7 @@ class AuthController extends GetxController {
 
   RxBool isLoading = false.obs;
   bool isSecure = true;
-  
+
   @override
   void onReady() {
     super.onReady();
@@ -34,7 +34,7 @@ class AuthController extends GetxController {
     ever(_user, _initialScreen);
   }
 
-  void clickNotification () {
+  void clickNotification() {
     notification.subscribe();
   }
 
@@ -62,8 +62,8 @@ class AuthController extends GetxController {
   }) async {
     try {
       isLoading.value = true;
-      if(confPasswordController.text != passwordController.text){
-        Get.snackbar("Error", "password doesn't match");
+      if (password != confPassword) {
+        throw 'Password and Confirm Password must match';
       }
       await auth.createUserWithEmailAndPassword(
         email: emailController.text,
@@ -76,22 +76,42 @@ class AuthController extends GetxController {
         password,
       );
       userController.createUser(user);
+      // await auth.currentUser!.updateDisplayName(username);
       prefs.setString('user_token', auth.currentUser!.uid);
       Get.snackbar(
         'Success',
         'Registration Successful',
         backgroundColor: AppColors.primaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
+      // await Future.delayed(const Duration(seconds: 2)); // Ganti dengan durasi yang sesuai
       goLogin();
+      
     } catch (error) {
+      String errorMessage = 'Registration Failed';
+
+      if (error is FirebaseAuthException) {
+        switch (error.code) {
+          case 'invalid-password':
+            errorMessage = 'Password should be at least 6 characters long';
+            break;
+          case 'email-already-exists':
+            errorMessage = 'The email is already in use by another account.';
+            break;
+          case 'invalid-email':
+            errorMessage = 'The email address is not valid.';
+            break;
+          default:
+            errorMessage = '${error.message}';
+        }
+      } else if (error is String) {
+        errorMessage = error; 
+      }
       Get.snackbar(
         'Error',
-        'Registration Failed: $error',
+        errorMessage,
         backgroundColor: AppColors.secondaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading.value = false;
@@ -111,7 +131,6 @@ class AuthController extends GetxController {
         'Login Successful',
         backgroundColor: AppColors.primaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
       goMain();
     } catch (error) {
@@ -120,7 +139,6 @@ class AuthController extends GetxController {
         'Login Failed: $error',
         backgroundColor: AppColors.secondaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading.value = false;
@@ -147,7 +165,6 @@ class AuthController extends GetxController {
           'Login With Google Successful',
           backgroundColor: AppColors.primaryColor,
           colorText: AppColors.whiteColor,
-          snackPosition: SnackPosition.TOP,
         );
       }
     } catch (error) {
@@ -156,7 +173,6 @@ class AuthController extends GetxController {
         'Login Failed: $error',
         backgroundColor: AppColors.secondaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading.value = false;
@@ -176,7 +192,6 @@ class AuthController extends GetxController {
         'Logout Successful',
         backgroundColor: AppColors.primaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
     } catch (error) {
       Get.snackbar(
@@ -184,7 +199,6 @@ class AuthController extends GetxController {
         'Logout Failed: $error',
         backgroundColor: AppColors.secondaryColor,
         colorText: AppColors.whiteColor,
-        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading.value = false;
