@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_otp_auth.dart';
 
-class VerifyForgotScreen extends GetView<AuthController> {
-  const VerifyForgotScreen({Key? key}) : super(key: key);
+class VerifyForgotFirebaseScreen extends GetView<AuthFirebaseController> {
+  const VerifyForgotFirebaseScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

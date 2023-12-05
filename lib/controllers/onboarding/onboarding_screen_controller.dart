@@ -9,7 +9,7 @@ class OnboardingScreenController extends GetxController {
     currentIndex.value = index;
   }
 
-  void skipToLoginScreen() {
-    Get.offAndToNamed('/login');
+  void skipToAuthScreen() {
+    Get.offAndToNamed('/auth');
   }
 }

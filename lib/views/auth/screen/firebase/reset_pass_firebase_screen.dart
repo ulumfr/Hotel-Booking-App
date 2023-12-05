@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_title_auth.dart';
 
-class ResetPassScreen extends GetView<AuthController> {
-  const ResetPassScreen({Key? key}) : super(key: key);
+class ResetPassFirebaseScreen extends GetView<AuthFirebaseController> {
+  const ResetPassFirebaseScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,9 @@ class ResetPassScreen extends GetView<AuthController> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const TextTitleAuth(),
+                const TextTitleAuth(
+                  text: 'Hotels with Firebase',
+                ),
                 Image.asset("assets/images/resetpassword.jpg", height: 250),
                 const Text(
                   "Reset Password",

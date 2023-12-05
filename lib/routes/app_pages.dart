@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/imagepicker_controller.dart';
 import 'package:hotel_booking_app/controllers/main/main_screen_controller.dart';
@@ -7,11 +9,16 @@ import 'package:hotel_booking_app/controllers/main/home/webviewhotel_controller.
 import 'package:hotel_booking_app/controllers/onboarding/onboarding_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/onboarding/welcome_screen_controller.dart';
 import 'package:hotel_booking_app/views/auth/auth_screen.dart';
-import 'package:hotel_booking_app/views/auth/screen/forgot_pass_screen.dart';
-import 'package:hotel_booking_app/views/auth/screen/login_screen.dart';
-import 'package:hotel_booking_app/views/auth/screen/reset_pass_screen.dart';
-import 'package:hotel_booking_app/views/auth/screen/signup_screen.dart';
-import 'package:hotel_booking_app/views/auth/screen/verify_forgot_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/appwrite/forgot_pass_appwrite_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/appwrite/login_appwrite_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/appwrite/reset_pass_appwrite_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/appwrite/signup_appwrite_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/appwrite/verify_forgot_appwrite_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/firebase/forgot_pass_firebase_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/firebase/login_firebase_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/firebase/reset_pass_firebase_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/firebase/signup_firebase_screen.dart';
+import 'package:hotel_booking_app/views/auth/screen/firebase/verify_forgot_firebase_screen.dart';
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_nearby.dart';
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_popular.dart';
 import 'package:hotel_booking_app/views/main/main_screen.dart';
@@ -35,40 +42,50 @@ class AppRoutes {
       }),
     ),
     GetPage(
-      name: '/login',
-      page: () => const LoginScreen(),
+      name: '/loginFirebase',
+      page: () => const LoginFirebaseScreen(),
       binding: BindingsBuilder(() {
-        // Get.lazyPut(() => AuthController());
-        Get.put(AuthController());
+        Get.put(AuthFirebaseController());
       }),
     ),
     GetPage(
-      name: '/signup',
-      page: () => const SignupScreen(),
-      // binding: BindingsBuilder(() {
-      //   Get.lazyPut(() => AuthController());
-      // }),
+      name: '/signupFirebase',
+      page: () => const SignupFirebaseScreen(),
     ),
     GetPage(
-      name: '/forgot',
-      page: () => const ForgotPassScreen(),
-      // binding: BindingsBuilder(() {
-      //   Get.lazyPut(() => AuthController());
-      // }),
+      name: '/forgotFirebase',
+      page: () => const ForgotPassFirebaseScreen(),
     ),
     GetPage(
-      name: '/verify',
-      page: () => const VerifyForgotScreen(),
-      // binding: BindingsBuilder(() {
-      //   Get.lazyPut(() => AuthController());
-      // }),
+      name: '/verifyFirebase',
+      page: () => const VerifyForgotFirebaseScreen(),
     ),
     GetPage(
-      name: '/reset',
-      page: () => const ResetPassScreen(),
-      // binding: BindingsBuilder(() {
-      //   Get.lazyPut(() => AuthController());
-      // }),
+      name: '/resetFirebase',
+      page: () => const ResetPassFirebaseScreen(),
+    ),
+    GetPage(
+      name: '/loginAppwrite',
+      page: () => const LoginAppwriteScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(AuthAppwriteController());
+      }),
+    ),
+    GetPage(
+      name: '/signupAppwrite',
+      page: () => const SignupAppwriteScreen(),
+    ),
+    GetPage(
+      name: '/forgotAppwrite',
+      page: () => const ForgotPassAppwriteScreen(),
+    ),
+    GetPage(
+      name: '/verifyAppwrite',
+      page: () => const VerifyForgotAppwriteScreen(),
+    ),
+    GetPage(
+      name: '/resetAppwrite',
+      page: () => const ResetPassAppwriteScreen(),
     ),
     GetPage(
       name: '/auth',

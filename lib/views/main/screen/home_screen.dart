@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
 import 'package:hotel_booking_app/views/main/components/home/imgpicker/imagepicker_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
@@ -13,11 +14,12 @@ import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart'
 class HomeScreen extends GetView<HomeScreenController> {
   HomeScreen({Key? key}) : super(key: key);
 
-  final isloginUser = FirebaseAuth.instance.currentUser!;
+  // final isloginUser = FirebaseAuth.instance.currentUser!;
+  final AuthAppwriteController authAppwriteController =
+      Get.find<AuthAppwriteController>();
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -43,7 +45,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                         Padding(
                           padding: const EdgeInsets.only(top: 12),
                           child: Text(
-                            'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
+                            // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
+                            '${authAppwriteController.username}',
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,

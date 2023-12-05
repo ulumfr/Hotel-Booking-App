@@ -1,13 +1,19 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:hotel_booking_app/views/main/components/profile/profile_list_item.dart';
 
-class ProfileScreen extends GetView<AuthController> {
+// AuthFirebaseController sementara di nonaktifkan
+class ProfileScreen extends GetView<AuthFirebaseController> {
   ProfileScreen({Key? key}) : super(key: key);
-  final isloginUser = FirebaseAuth.instance.currentUser!;
+
+  // final isloginUser = FirebaseAuth.instance.currentUser!;
+
+  final AuthAppwriteController authAppwriteController =
+      Get.find<AuthAppwriteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +97,8 @@ class ProfileScreen extends GetView<AuthController> {
                           Positioned(
                             top: 65,
                             child: Text(
-                              '${isloginUser.displayName ?? isloginUser.email}',
+                              // '${isloginUser.displayName ?? isloginUser.email}',
+                              '${authAppwriteController.username}',
                               style: const TextStyle(
                                 color: AppColors.whiteColor,
                                 fontSize: 23,
@@ -111,7 +118,7 @@ class ProfileScreen extends GetView<AuthController> {
                       const SizedBox(height: 20),
                       ProfileListItem(
                         onTap: () {
-                          controller.clickNotification();
+                          // controller.clickNotification();
                         },
                         icon: Icons.notifications,
                         text: "Notification",
@@ -143,7 +150,7 @@ class ProfileScreen extends GetView<AuthController> {
                       const SizedBox(height: 20),
                       ProfileListItem(
                         onTap: () {
-                          controller.logout();
+                          authAppwriteController.logout();
                         },
                         icon: Icons.exit_to_app,
                         text: "Logout",

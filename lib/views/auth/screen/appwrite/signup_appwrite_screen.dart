@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/views/auth/components/more_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_field_auth.dart';
 import 'package:hotel_booking_app/views/auth/components/text_title_auth.dart';
 
-class SignupScreen extends GetView<AuthController> {
-  const SignupScreen({Key? key}) : super(key: key);
+class SignupAppwriteScreen extends GetView<AuthAppwriteController> {
+  const SignupAppwriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,9 @@ class SignupScreen extends GetView<AuthController> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const TextTitleAuth(),
+                const TextTitleAuth(
+                  text: 'Hotels with Appwrite',
+                ),
                 const SizedBox(height: 5),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 18),
@@ -73,19 +75,9 @@ class SignupScreen extends GetView<AuthController> {
                       ),
                       const SizedBox(height: 25),
                       GestureDetector(
-                        onTap: controller.isLoading.value
-                            ? null
-                            : () {
-                                controller.registerUser(
-                                  username:
-                                      controller.nameController.text.trim(),
-                                  email: controller.emailController.text.trim(),
-                                  password:
-                                      controller.passwordController.text.trim(),
-                                  confPassword:
-                                      controller.confPasswordController.text.trim(),
-                                );
-                              },
+                        onTap: () {
+                          controller.signup();
+                        },
                         child: Container(
                           width: double.infinity,
                           height: 50,

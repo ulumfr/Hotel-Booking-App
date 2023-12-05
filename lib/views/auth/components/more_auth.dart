@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
+import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 
-class MoreAuth extends GetView<AuthController> {
+class MoreAuth extends GetView<AuthFirebaseController> {
   const MoreAuth({Key? key}) : super(key: key);
 
   @override

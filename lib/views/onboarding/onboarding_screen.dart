@@ -21,7 +21,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
               child: GestureDetector(
                 onTap: () {
                   if (controller.currentIndex.value != geser.length - 1) {
-                    controller.skipToLoginScreen();
+                    controller.skipToAuthScreen();
                   }
                 },
                 child: Text(
@@ -167,7 +167,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                   ),
                   onPressed: () {
                     if (controller.currentIndex.value == geser.length - 1) {
-                      controller.skipToLoginScreen();
+                      controller.skipToAuthScreen();
                     } else {
                       controller.pageController.nextPage(
                         duration: const Duration(milliseconds: 200),
