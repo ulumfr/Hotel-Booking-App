@@ -3,14 +3,20 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/auth/appwrite/client_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
+import 'package:hotel_booking_app/models/auth/user_model.dart';
+import 'package:uuid/uuid.dart';
 
 class AuthAppwriteController extends ClientController {
   Account? account;
+  Databases? databases;
   late User _currentUser;
 
   User get currentUser => _currentUser;
   String? get username => _currentUser.name;
+  final ProfileScreenController controller = Get.find<ProfileScreenController>();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -23,7 +29,9 @@ class AuthAppwriteController extends ClientController {
   @override
   void onInit() {
     super.onInit();
+    // Get.put(ProfileScreenController());
     account = Account(client);
+    databases = Databases(client);
   }
 
   Future createAccount(Map map) async {
@@ -84,13 +92,17 @@ class AuthAppwriteController extends ClientController {
 
   void signup() {
     try {
+      final unikuserId = const Uuid().v4();
+      final userId = unikuserId.replaceAll('-', '');
       if (passwordController.text == confPasswordController.text) {
-        createAccount({
-          'userId': ID.unique(),
+        Map<String, dynamic> userData = {
+          'userId': userId,
           'email': emailController.text,
           'password': passwordController.text,
           'name': nameController.text,
-        });
+        };
+        createAccount(userData);
+        createDoc(userData);
         goLogin();
       } else {
         print('Password and confirm password do not match');
@@ -155,6 +167,69 @@ class AuthAppwriteController extends ClientController {
     }
   }
 
+  // void updateData(){
+  //   updateDoc(docId);
+  // }
+
+
+
+  Future<void> createDoc(Map<String, dynamic> map) async{
+    final docIds = ID.unique();
+    print("ini docs $docIds");
+    final unikuserId = const Uuid().v4();
+    final docId = unikuserId.replaceAll('-', '');
+    final documents = Users(
+      docId: docId,
+      id: map['userId'],
+      username: map['name'],
+      password: map['password'],
+      email: map['email']
+    );
+    await databases!.createDocument(
+        databaseId: AppwriteController.userdb,
+        collectionId: AppwriteController.usercol,
+        documentId: docId,
+        data: documents.toJson()
+    );
+    // final users = userData.data;
+    // final savedId = users['docId'];
+    getDoc(docId);
+  }
+
+  Future<void> getDoc(String uid) async {
+    final query = Query.equal('userId', uid);
+
+    final response = await databases!.getDocument(
+        databaseId: AppwriteController.userdb,
+        collectionId: AppwriteController.usercol,
+        documentId: uid
+    );
+
+    final documentData = response.data;
+    final doc = Users.fromJson(documentData);
+    controller.nameController.text = doc.username!;
+    controller.passwordController.text = doc.password!;
+    controller.emailController.text = doc.email!;
+    controller.phoneController.text = doc.phone as String;
+  }
+
+  Future updateDoc(String uid) async {
+    final user = Users(
+      username: controller.nameController.text,
+      password: controller.passwordController.text,
+      email: controller.emailController.text,
+      phone: controller.phoneController.text
+    );
+
+    await databases!.updateDocument(
+        databaseId: AppwriteController.userdb,
+        collectionId: AppwriteController.usercol,
+        documentId: uid,
+        data: user.toJson(),
+    );
+  }
+
+
   // void logout() async {
   //   try {
   //     isLoading.value = true;
@@ -176,6 +251,8 @@ class AuthAppwriteController extends ClientController {
   //     isLoading.value = false;
   //   }
   // }
+
+
 
   void goLogin() {
     clear();
