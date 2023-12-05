@@ -204,6 +204,10 @@ class AuthAppwriteController extends ClientController {
     Get.offAndToNamed('/main');
   }
 
+  void goEdit() {
+    Get.toNamed('/editProfile');
+  }
+
   void clear() {
     nameController.clear();
     emailController.clear();

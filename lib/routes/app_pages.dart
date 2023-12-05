@@ -4,6 +4,7 @@ import 'package:hotel_booking_app/controllers/auth/auth_controller.dart';
 import 'package:hotel_booking_app/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/imagepicker_controller.dart';
+import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/main_screen_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/webviewhotel_controller.dart';
 import 'package:hotel_booking_app/controllers/onboarding/onboarding_screen_controller.dart';
@@ -22,6 +23,7 @@ import 'package:hotel_booking_app/views/auth/screen/firebase/verify_forgot_fireb
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_nearby.dart';
 import 'package:hotel_booking_app/views/main/components/home/webview/webview_popular.dart';
 import 'package:hotel_booking_app/views/main/main_screen.dart';
+import 'package:hotel_booking_app/views/main/screen/edit_profile_screen.dart';
 import 'package:hotel_booking_app/views/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/views/onboarding/welcome_screen.dart';
 
@@ -101,6 +103,13 @@ class AppRoutes {
         Get.lazyPut(() => MainScreenController());
         Get.lazyPut(() => ImagepickerController());
         Get.lazyPut(() => HomeScreenController());
+      }),
+    ),
+    GetPage(
+      name: '/editProfile',
+      page: () => const EditProfileScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => ProfileScreenController());
       }),
     ),
     GetPage(

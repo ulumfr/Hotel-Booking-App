@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 
 import 'package:get/get.dart';
+import 'package:hotel_booking_app/controllers/auth/appwrite/appwrite_controller.dart';
 
 class ClientController extends GetxController {
   Client client = Client();
@@ -8,12 +9,13 @@ class ClientController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    cloud();
+  }
 
-    const endPoint = "https://cloud.appwrite.io/v1";
-    const projectID = "653e21c16e7ec2b72c76";
+  void cloud() {
     client
-        .setEndpoint(endPoint)
-        .setProject(projectID)
+        .setEndpoint(AppwriteController.endPoint)
+        .setProject(AppwriteController.projectID)
         .setSelfSigned(status: true);
   }
 }

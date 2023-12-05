@@ -76,7 +76,8 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                               borderRadius: BorderRadius.circular(17),
                               image: const DecorationImage(
                                 image: AssetImage(
-                                    "assets/images/background-profile.jpg"),
+                                  "assets/images/background-profile.jpg",
+                                ),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -88,8 +89,9 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(100),
                                 child: const Image(
-                                  image:
-                                      AssetImage("assets/images/profile.png"),
+                                  image: AssetImage(
+                                    "assets/images/profile.png",
+                                  ),
                                 ),
                               ),
                             ),
@@ -111,7 +113,9 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                       ),
                       const SizedBox(height: 20),
                       ProfileListItem(
-                        onTap: () {},
+                        onTap: () {
+                          authAppwriteController.goEdit();
+                        },
                         icon: Icons.edit,
                         text: "Edit Profile",
                       ),
