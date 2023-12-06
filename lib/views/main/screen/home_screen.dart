@@ -43,17 +43,18 @@ class HomeScreen extends GetView<HomeScreenController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 12),
-                          child: Text(
-                            // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
-                            '${authAppwriteController.username}',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
+                            padding: const EdgeInsets.only(top: 12),
+                            child: Obx(
+                              () => Text(
+                                // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
+                                'Welcome, ${authAppwriteController.userdat[0].username}',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )),
                         const Row(
                           children: [
                             Icon(

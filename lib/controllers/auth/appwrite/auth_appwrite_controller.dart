@@ -262,7 +262,7 @@ class AuthAppwriteController extends ClientController {
         documentId: userdat[0].docId!,
         data: user.toJson(),
     );
-    userdat.clear();
+    // userdat.clear();
     getDoc(userId!);
   }
 
