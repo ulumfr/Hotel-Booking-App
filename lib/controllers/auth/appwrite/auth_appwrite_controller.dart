@@ -218,10 +218,35 @@ class AuthAppwriteController extends ClientController {
     controller.nameController.text = datas[0].username!;
     controller.passwordController.text = datas[0].password!;
     controller.emailController.text = datas[0].email!;
-    controller.phoneController.text = datas[0].phone!;
+    if(datas[0].phone!.startsWith("+")){
+      final nohp = datas[0].phone!.replaceAll("+", "");
+      controller.phoneController.text = nohp;
+    }else{
+      controller.phoneController.text = datas[0].phone!;
+    }
   }
 
   Future updateDoc() async {
+    final userId = userdat[0].id;
+    // if(userdat[0].password != controller.passwordController.text){
+    //   account!.updatePassword(password: controller.passwordController.text);
+    //   // account!.updateEmail(email: userdat[0].email!, password: controller.passwordController.text);
+    //   // getDoc(userdat[0].id!);
+    // }
+    // if(userdat[0].email != controller.emailController.text){
+    //   account!.updateEmail(email: controller.emailController.text, password: controller.passwordController.text);
+    //   // account!.updatePassword(password: userdat[0].password!);
+    //   // getDoc(userdat[0].id!);
+    // }
+    if(userdat[0].username != controller.nameController.text){
+      account!.updateName(name: controller.nameController.text);
+      // getDoc(userdat[0].id!);
+    }
+    if(userdat[0].phone != controller.phoneController.text){
+      account!.updatePhone(phone: "+${controller.phoneController.text}", password: userdat[0].password!);
+      // getDoc(userdat[0].id!);
+    }
+
     final user = Users(
       id: userdat[0].id,
       docId: userdat[0].docId,
@@ -237,9 +262,34 @@ class AuthAppwriteController extends ClientController {
         documentId: userdat[0].docId!,
         data: user.toJson(),
     );
+    userdat.clear();
+    getDoc(userId!);
   }
 
-
+  Future<void> deleteAccount() async {
+    try {
+      await databases!.deleteDocument(
+        databaseId: AppwriteController.userdb,
+        collectionId: AppwriteController.usercol,
+        documentId: userdat[0].docId!,
+      );
+      goLogin();
+      Get.snackbar(
+        'Success',
+        'Deleted User Database Successfully',
+        backgroundColor: AppColors.primaryColor,
+        colorText: AppColors.whiteColor,
+      );
+    } catch (error) {
+      print('$error');
+      Get.snackbar(
+        'Error',
+        'Failed to Delete Account: $error',
+        backgroundColor: AppColors.secondaryColor,
+        colorText: AppColors.whiteColor,
+      );
+    }
+  }
   // void logout() async {
   //   try {
   //     isLoading.value = true;

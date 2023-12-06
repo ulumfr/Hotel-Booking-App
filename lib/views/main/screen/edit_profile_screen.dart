@@ -4,6 +4,7 @@ import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
 import 'package:hotel_booking_app/models/auth/user_model.dart';
+import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/main/components/profile/text_field_profile.dart';
 
 class EditProfileScreen extends GetView<ProfileScreenController> {
@@ -87,21 +88,23 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                     isEnabled: controller.isEditing.value,
                   );
                 }),
-                Obx(() {
-                  return TextFieldProfile(
+                // Obx(() {
+                //   return
+                    TextFieldProfile(
                     text: 'ini email',
                     controllerText: controller.emailController,
-                    isEnabled: controller.isEditing.value,
-                  );
-                }),
-                Obx(() {
-                  return TextFieldProfile(
+                    isEnabled: false,
+                  ),
+                // }),
+                // Obx(() {
+                //   return
+            TextFieldProfile(
                     text: 'ini password',
                     controllerText: controller.passwordController,
                     obscureText: true,
-                    isEnabled: controller.isEditing.value,
-                  );
-                }),
+                    isEnabled: false,
+                  ),
+                // }),
                 Obx(() {
                   return Visibility(
                     visible: controller.isEditing.value,
@@ -114,6 +117,48 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                     ),
                   );
                 }),
+                const SizedBox(height: 30),
+                ButtonAuth(
+                  text: 'Delete Database Users',
+                  onTap: () {
+                    Get.defaultDialog(
+                      title: 'Konfirmasi',
+                      titleStyle: const TextStyle(
+                        color: AppColors.whiteColor,
+                      ),
+                      backgroundColor: AppColors.secondaryColor,
+                      content: const Text(
+                        'Apakah Anda yakin ingin menghapus database user Anda?',
+                        style: TextStyle(
+                          color: AppColors.whiteColor,
+                        ),
+                      ),
+                      confirm: TextButton(
+                        onPressed: () {
+                          con.deleteAccount();
+                          Get.back();
+                        },
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
+                      ),
+                      cancel: TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: const Text(
+                          'Batal',
+                          style: TextStyle(
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           ),

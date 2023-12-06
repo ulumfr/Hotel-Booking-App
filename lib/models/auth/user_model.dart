@@ -24,12 +24,21 @@ class Users {
         phone: json['phone'] as String ?? ""
       );
 
-  Map<String, dynamic> toJson() => {
-        "docId": docId,
-        "userId": id,
-        "name": username,
-        "email": email,
-        "password": password,
-        "phone": phone ?? ""
-      };
+  Map<String, dynamic> toJson() {
+    String formattedPhone = phone ?? "";
+    // if (!formattedPhone.startsWith('+')) {
+    //   formattedPhone = '+$formattedPhone';
+    // }
+    if (formattedPhone.length > 15) {
+      formattedPhone = formattedPhone.substring(0, 15);
+    }
+    return {
+          "docId": docId,
+          "userId": id,
+          "name": username,
+          "email": email,
+          "password": password,
+          "phone": formattedPhone
+    };
+  }
 }
