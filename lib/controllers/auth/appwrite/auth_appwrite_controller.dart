@@ -13,7 +13,7 @@ class AuthAppwriteController extends ClientController {
   Account? account;
   Databases? databases;
   late User _currentUser;
-
+  RxList<Users> userdat = <Users>[].obs;
   User get currentUser => _currentUser;
   String? get username => _currentUser.name;
   final ProfileScreenController controller = Get.find<ProfileScreenController>();
@@ -118,30 +118,36 @@ class AuthAppwriteController extends ClientController {
   }
 
   void login() {
-    try {
+    // try {
       createEmailSession({
         'email': emailController.text,
         'password': passwordController.text,
       }).then((result) async {
         if (account != null) {
+          // final test = result.userId;
           _currentUser = await account!.get();
+          final ekr = _currentUser.$id;
+          getDoc(ekr);
+          // final Users user = Get.arguments as Users;
+
           goMain();
         } else {
           print('Account is null');
         }
-      }).catchError((error) {
-        Get.defaultDialog(
-          title: "Error Account",
+      // }).catchError((error) {
+      //   Get.defaultDialog(
+      //     title: "Error Account",
+      //   );
+      }
         );
-      });
-    } catch (error) {
-      Get.snackbar(
-        'Error',
-        'Login Failed: $error',
-        backgroundColor: AppColors.secondaryColor,
-        colorText: AppColors.whiteColor,
-      );
-    }
+    // } catch (error) {
+    //   Get.snackbar(
+    //     'Error',
+    //     'Login Failed: $error',
+    //     backgroundColor: AppColors.secondaryColor,
+    //     colorText: AppColors.whiteColor,
+    //   );
+    // }
   }
 
   Future<void> logout() async {
@@ -193,28 +199,32 @@ class AuthAppwriteController extends ClientController {
     );
     // final users = userData.data;
     // final savedId = users['docId'];
-    getDoc(docId);
+    // getDoc(documents.docId);
   }
 
   Future<void> getDoc(String uid) async {
     final query = Query.equal('userId', uid);
-
-    final response = await databases!.getDocument(
+    //
+    final response = await databases!.listDocuments(
         databaseId: AppwriteController.userdb,
         collectionId: AppwriteController.usercol,
-        documentId: uid
+        queries: [query]
     );
 
-    final documentData = response.data;
-    final doc = Users.fromJson(documentData);
-    controller.nameController.text = doc.username!;
-    controller.passwordController.text = doc.password!;
-    controller.emailController.text = doc.email!;
-    controller.phoneController.text = doc.phone as String;
+    final documentData = response.documents;
+    final datas = documentData.map((e) => Users.fromJson(e.data)).toList();
+    userdat.assignAll(datas);
+    // final doc = Users.fromJson(documentData.data);
+    controller.nameController.text = datas[0].username!;
+    controller.passwordController.text = datas[0].password!;
+    controller.emailController.text = datas[0].email!;
+    controller.phoneController.text = datas[0].phone!;
   }
 
-  Future updateDoc(String uid) async {
+  Future updateDoc() async {
     final user = Users(
+      id: userdat[0].id,
+      docId: userdat[0].docId,
       username: controller.nameController.text,
       password: controller.passwordController.text,
       email: controller.emailController.text,
@@ -224,7 +234,7 @@ class AuthAppwriteController extends ClientController {
     await databases!.updateDocument(
         databaseId: AppwriteController.userdb,
         collectionId: AppwriteController.usercol,
-        documentId: uid,
+        documentId: userdat[0].docId!,
         data: user.toJson(),
     );
   }
@@ -278,7 +288,7 @@ class AuthAppwriteController extends ClientController {
 
   void goMain() {
     clear();
-    Get.offAndToNamed('/main');
+    Get.toNamed('/main');
   }
 
   void goEdit() {

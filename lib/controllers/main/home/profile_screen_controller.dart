@@ -13,11 +13,13 @@ class ProfileScreenController extends GetxController {
   }
 
   @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-
-  }
+  // void onInit() {
+  //   // TODO: implement onInit
+  //   super.onInit();
+  //   final Users user = Get.arguments as Users;
+  //   AuthAppwriteController().getDoc(user.docId ?? "");
+  //
+  // }
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
