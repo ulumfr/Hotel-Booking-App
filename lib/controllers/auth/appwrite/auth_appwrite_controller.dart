@@ -6,7 +6,7 @@ import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/appwrite/appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/auth/appwrite/client_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
-import 'package:hotel_booking_app/models/auth/user_model.dart';
+import 'package:hotel_booking_app/models/auth/user_appwrite_model.dart';
 import 'package:uuid/uuid.dart';
 
 class AuthAppwriteController extends ClientController {

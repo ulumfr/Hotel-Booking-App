@@ -1,22 +1,22 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
+// import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/home_screen_controller.dart';
 import 'package:hotel_booking_app/views/main/components/home/imgpicker/imagepicker_item.dart';
-// import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
+import 'package:hotel_booking_app/views/main/components/horizontal_card_item.dart';
 import 'package:hotel_booking_app/views/main/components/search_textfield.dart';
 import 'package:hotel_booking_app/views/main/components/text_main.dart';
 import 'package:hotel_booking_app/views/main/components/text_seeall.dart';
-// import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
+import 'package:hotel_booking_app/views/main/components/vertical_card_item.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
   HomeScreen({Key? key}) : super(key: key);
 
-  // final isloginUser = FirebaseAuth.instance.currentUser!;
-  final AuthAppwriteController authAppwriteController =
-      Get.find<AuthAppwriteController>();
+  final isloginUser = FirebaseAuth.instance.currentUser!;
+  // final AuthAppwriteController authAppwriteController =
+  //     Get.find<AuthAppwriteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +43,17 @@ class HomeScreen extends GetView<HomeScreenController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                            padding: const EdgeInsets.only(top: 12),
-                            child: Obx(
-                              () => Text(
-                                // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
-                                'Welcome, ${authAppwriteController.userdat[0].username}',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
+                          padding: const EdgeInsets.only(top: 12),
+                          child: Text(
+                            'Welcome, ${isloginUser.displayName ?? isloginUser.email}',
+                            // 'Welcome, ${authAppwriteController.userdat[0].username}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
                         const Row(
                           children: [
                             Icon(
@@ -145,26 +144,26 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ],
                 ),
               ),
-              // SizedBox(
-              //   height: 220,
-              //   width: double.infinity,
-              //   child: Obx(
-              //     () {
-              //       if (controller.hotelsHorizontal.isEmpty) {
-              //         return const Center(child: CircularProgressIndicator());
-              //       } else {
-              //         return ListView.builder(
-              //           clipBehavior: Clip.none,
-              //           scrollDirection: Axis.horizontal,
-              //           itemBuilder: (context, index) => HorizontalCardItem(
-              //             horizontalCard: controller.hotelsHorizontal[index],
-              //           ),
-              //           itemCount: controller.hotelsHorizontal.length,
-              //         );
-              //       }
-              //     },
-              //   ),
-              // ),
+              SizedBox(
+                height: 220,
+                width: double.infinity,
+                child: Obx(
+                  () {
+                    if (controller.hotelsHorizontal.isEmpty) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return ListView.builder(
+                        clipBehavior: Clip.none,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => HorizontalCardItem(
+                          horizontalCard: controller.hotelsHorizontal[index],
+                        ),
+                        itemCount: controller.hotelsHorizontal.length,
+                      );
+                    }
+                  },
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 18,
@@ -184,27 +183,27 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ],
                 ),
               ),
-              // SizedBox(
-              //   width: double.infinity,
-              //   child: Obx(
-              //     () {
-              //       if (controller.hotelsVertical.isEmpty) {
-              //         return const Center(child: CircularProgressIndicator());
-              //       } else {
-              //         return ListView.separated(
-              //           shrinkWrap: true,
-              //           physics: const NeverScrollableScrollPhysics(),
-              //           itemBuilder: (context, index) => VerticalCardItem(
-              //             verticalCard: controller.hotelsVertical[index],
-              //           ),
-              //           separatorBuilder: (context, index) =>
-              //               const SizedBox(height: 10),
-              //           itemCount: controller.hotelsVertical.length,
-              //         );
-              //       }
-              //     },
-              //   ),
-              // ),
+              SizedBox(
+                width: double.infinity,
+                child: Obx(
+                  () {
+                    if (controller.hotelsVertical.isEmpty) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => VerticalCardItem(
+                          verticalCard: controller.hotelsVertical[index],
+                        ),
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 10),
+                        itemCount: controller.hotelsVertical.length,
+                      );
+                    }
+                  },
+                ),
+              ),
               const SizedBox(height: 20),
             ],
           ),

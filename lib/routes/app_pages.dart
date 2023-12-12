@@ -17,6 +17,7 @@ import 'package:hotel_booking_app/views/auth/screen/appwrite/signup_appwrite_scr
 import 'package:hotel_booking_app/views/auth/screen/appwrite/verify_forgot_appwrite_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/firebase/forgot_pass_firebase_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/firebase/login_firebase_screen.dart';
+
 import 'package:hotel_booking_app/views/auth/screen/firebase/reset_pass_firebase_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/firebase/signup_firebase_screen.dart';
 import 'package:hotel_booking_app/views/auth/screen/firebase/verify_forgot_firebase_screen.dart';

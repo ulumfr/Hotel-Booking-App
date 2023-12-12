@@ -26,16 +26,16 @@ class AuthScreen extends GetView<AuthController> {
               ),
               const SizedBox(height: 20),
               ButtonAuth(
-                text: "Login with Firebase (Inactive)",
+                text: "Login with Firebase",
                 onTap: () {
                   controller.goLoginFirebase();
                 },
               ),
               const SizedBox(height: 20),
               ButtonAuth(
-                text: "Login with Appwrite",
+                text: "Login with Appwrite (Inactive)",
                 onTap: () {
-                  controller.goLoginAppwrite();
+                  // controller.goLoginAppwrite();
                 },
               ),
             ],

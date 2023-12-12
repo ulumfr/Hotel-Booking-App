@@ -1,7 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
-import 'package:hotel_booking_app/models/auth/user_model.dart';
 
 class ProfileScreenController extends GetxController {
   RxBool isEditing = false.obs;
@@ -12,7 +10,7 @@ class ProfileScreenController extends GetxController {
     update();
   }
 
-  @override
+  // @override
   // void onInit() {
   //   // TODO: implement onInit
   //   super.onInit();
@@ -20,10 +18,9 @@ class ProfileScreenController extends GetxController {
   //   AuthAppwriteController().getDoc(user.docId ?? "");
   //
   // }
+  
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-
 }

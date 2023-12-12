@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
-import 'package:hotel_booking_app/models/auth/user_model.dart';
+// import 'package:hotel_booking_app/models/auth/user_appwrite_model.dart';
 import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/main/components/profile/text_field_profile.dart';
 
+// INI LOGIKANYA MASIH DI APPWRITE (BELUM DIGANTI KE FIREBASE)
 class EditProfileScreen extends GetView<ProfileScreenController> {
   const EditProfileScreen({Key? key}) : super(key: key);
 
@@ -31,7 +32,7 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
           },
         ),
         iconTheme: const IconThemeData(
-          color: AppColors.blackColor, 
+          color: AppColors.blackColor,
         ),
         actions: [
           GestureDetector(
@@ -88,23 +89,17 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                     isEnabled: controller.isEditing.value,
                   );
                 }),
-                // Obx(() {
-                //   return
-                    TextFieldProfile(
-                    text: 'ini email',
-                    controllerText: controller.emailController,
-                    isEnabled: false,
-                  ),
-                // }),
-                // Obx(() {
-                //   return
-            TextFieldProfile(
-                    text: 'ini password',
-                    controllerText: controller.passwordController,
-                    obscureText: true,
-                    isEnabled: false,
-                  ),
-                // }),
+                TextFieldProfile(
+                  text: 'ini email',
+                  controllerText: controller.emailController,
+                  isEnabled: false,
+                ),
+                TextFieldProfile(
+                  text: 'ini password',
+                  controllerText: controller.passwordController,
+                  obscureText: true,
+                  isEnabled: false,
+                ),
                 Obx(() {
                   return Visibility(
                     visible: controller.isEditing.value,

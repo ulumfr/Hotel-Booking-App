@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking_app/models/auth/user_model.dart';
+import 'package:hotel_booking_app/models/auth/user_firebase_model.dart';
 
 class UserFirebaseController extends GetxController {
   final FirebaseFirestore dbUsers = FirebaseFirestore.instance;
