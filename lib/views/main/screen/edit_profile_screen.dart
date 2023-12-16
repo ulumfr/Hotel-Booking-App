@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
-import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
+// import 'package:hotel_booking_app/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:hotel_booking_app/controllers/main/home/profile_screen_controller.dart';
 // import 'package:hotel_booking_app/models/auth/user_appwrite_model.dart';
 import 'package:hotel_booking_app/views/auth/components/button_auth.dart';
 import 'package:hotel_booking_app/views/main/components/profile/text_field_profile.dart';
 
-// INI LOGIKANYA MASIH DI APPWRITE (BELUM DIGANTI KE FIREBASE)
 class EditProfileScreen extends GetView<ProfileScreenController> {
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final con = Get.find<AuthAppwriteController>();
+    // final con = Get.find<AuthAppwriteController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -106,7 +105,7 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                     child: ElevatedButton(
                       onPressed: () {
                         controller.toggleEditing();
-                        con.updateDoc();
+                        // con.updateDoc();
                       },
                       child: const Text('Save'),
                     ),
@@ -130,7 +129,7 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                       ),
                       confirm: TextButton(
                         onPressed: () {
-                          con.deleteAccount();
+                          // con.deleteAccount();
                           Get.back();
                         },
                         child: const Text(

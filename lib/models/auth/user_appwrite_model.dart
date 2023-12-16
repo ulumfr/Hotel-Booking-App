@@ -16,14 +16,15 @@ class Users {
     this.password,
   });
 
-  factory Users.fromJson(Map<String, dynamic> json) => Users(
-        docId: json["docId"] as String,
-        id: json["userId"] as String,
-        username: json["name"] as String,
-        email: json["email"] as String,
-        password: json["password"] as String,
-        phone: json['phone'] as String ?? ""
-      );
+  factory Users.fromJson(Map<String, dynamic> json) {
+    return Users(
+        docId: json["docId"] as String?,
+        id: json["userId"] as String?,
+        username: json["name"] as String?,
+        email: json["email"] as String?,
+        password: json["password"] as String?,
+        phone: json['phone'] != null ? json['phone'] as String : "");
+  }
 
   Map<String, dynamic> toJson() {
     String formattedPhone = phone ?? "";
@@ -34,12 +35,12 @@ class Users {
       formattedPhone = formattedPhone.substring(0, 15);
     }
     return {
-          "docId": docId,
-          "userId": id,
-          "name": username,
-          "email": email,
-          "password": password,
-          "phone": formattedPhone
+      "docId": docId,
+      "userId": id,
+      "name": username,
+      "email": email,
+      "password": password,
+      "phone": formattedPhone
     };
   }
 }

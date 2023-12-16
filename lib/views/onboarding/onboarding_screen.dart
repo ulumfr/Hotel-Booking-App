@@ -1,8 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking_app/constants.dart';
 import 'package:hotel_booking_app/controllers/onboarding/onboarding_screen_controller.dart';
-import 'package:hotel_booking_app/models/onboarding/onboarding_model.dart';
 import 'package:hotel_booking_app/views/onboarding/components/titik_geser.dart';
 
 class OnboardingScreen extends GetView<OnboardingScreenController> {
@@ -20,14 +20,16 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
               padding: const EdgeInsets.only(right: 25, top: 30),
               child: GestureDetector(
                 onTap: () {
-                  if (controller.currentIndex.value != geser.length - 1) {
+                  if (controller.currentIndex.value !=
+                      controller.onboardingData.length - 1) {
                     controller.skipToAuthScreen();
                   }
                 },
                 child: Text(
-                  controller.currentIndex.value == geser.length - 1
+                  controller.currentIndex.value ==
+                          controller.onboardingData.length - 1
                       ? ''
-                      : 'skip',
+                      : 'Skip',
                   style: const TextStyle(
                     color: AppColors.primaryColor,
                     fontSize: 18,
@@ -45,99 +47,119 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
           child: Column(
             children: [
               Expanded(
-                child: PageView.builder(
-                  controller: controller.pageController,
-                  itemCount: geser.length,
-                  onPageChanged: controller.ganti,
-                  itemBuilder: (_, i) {
-                    return Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            width: MediaQuery.sizeOf(context).width,
-                            child: Stack(
-                              alignment: AlignmentDirectional.center,
+                child: controller.onboardingData.isEmpty
+                    ? const Center(child: CircularProgressIndicator())
+                    : PageView.builder(
+                        controller: controller.pageController,
+                        itemCount: controller.onboardingData.length,
+                        onPageChanged: controller.ganti,
+                        itemBuilder: (_, i) {
+                          return Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.34,
-                                  margin: const EdgeInsets.only(
-                                    left: 150,
-                                    top: 90,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  width: MediaQuery.sizeOf(context).width,
+                                  child: Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.5,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.34,
+                                        margin: const EdgeInsets.only(
+                                          left: 150,
+                                          top: 90,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.primaryColor,
+                                          borderRadius:
+                                              const BorderRadius.vertical(
+                                            top: Radius.circular(10),
+                                            bottom: Radius.circular(100),
+                                          ),
+                                          image: DecorationImage(
+                                            image: CachedNetworkImageProvider(
+                                              controller
+                                                  .onboardingData[i].image1,
+                                            ),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.5,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.34,
+                                        margin: const EdgeInsets.only(
+                                          right: 150,
+                                          bottom: 90,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.primaryColor,
+                                          borderRadius:
+                                              const BorderRadius.vertical(
+                                            bottom: Radius.circular(10),
+                                            top: Radius.circular(100),
+                                          ),
+                                          image: DecorationImage(
+                                            image: CachedNetworkImageProvider(
+                                              controller
+                                                  .onboardingData[i].image2,
+                                            ),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primaryColor,
-                                    borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(10),
-                                      bottom: Radius.circular(100),
-                                    ),
-                                    image: DecorationImage(
-                                      image: AssetImage(geser[i].image1),
-                                      fit: BoxFit.cover,
+                                ),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List.generate(
+                                    controller.onboardingData.length,
+                                    (index) => TitikGeser(index: index),
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.only(bottom: 7, top: 25),
+                                  child: Text(
+                                    controller.onboardingData[i].text,
+                                    style: const TextStyle(
+                                      fontSize: 27,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.34,
-                                  margin: const EdgeInsets.only(
-                                    right: 150,
-                                    bottom: 90,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primaryColor,
-                                    borderRadius: const BorderRadius.vertical(
-                                      bottom: Radius.circular(10),
-                                      top: Radius.circular(100),
-                                    ),
-                                    image: DecorationImage(
-                                      image: AssetImage(geser[i].image2),
-                                      fit: BoxFit.cover,
+                                  child: Text(
+                                    controller.onboardingData[i].dsc,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              geser.length,
-                              (index) => TitikGeser(index: index),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 7, top: 25),
-                            child: Text(
-                              geser[i].text,
-                              style: const TextStyle(
-                                fontSize: 27,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              geser[i].dsc,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
               Container(
                 height: 50,
@@ -156,7 +178,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                 ),
                 child: TextButton(
                   child: Text(
-                    controller.currentIndex.value == geser.length - 1
+                    controller.currentIndex.value ==
+                            controller.onboardingData.length - 1
                         ? 'Get Started'
                         : 'Next',
                     style: const TextStyle(
@@ -166,7 +189,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                     ),
                   ),
                   onPressed: () {
-                    if (controller.currentIndex.value == geser.length - 1) {
+                    if (controller.currentIndex.value ==
+                        controller.onboardingData.length - 1) {
                       controller.skipToAuthScreen();
                     } else {
                       controller.pageController.nextPage(

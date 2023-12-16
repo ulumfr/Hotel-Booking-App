@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -74,8 +75,8 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                               color: AppColors.primaryColor,
                               borderRadius: BorderRadius.circular(17),
                               image: const DecorationImage(
-                                image: AssetImage(
-                                  "assets/images/background-profile.jpg",
+                                image: CachedNetworkImageProvider(
+                                  'https://firebasestorage.googleapis.com/v0/b/modul3-bde6d.appspot.com/o/background-profile.jpg?alt=media',
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -114,6 +115,7 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                       ProfileListItem(
                         onTap: () {
                           // authAppwriteController.goEdit();
+                          controller.goEdit();
                         },
                         icon: Icons.edit,
                         text: "Edit Profile",

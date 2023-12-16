@@ -9,15 +9,6 @@ class ProfileScreenController extends GetxController {
     // controller.updateData();
     update();
   }
-
-  // @override
-  // void onInit() {
-  //   // TODO: implement onInit
-  //   super.onInit();
-  //   final Users user = Get.arguments as Users;
-  //   AuthAppwriteController().getDoc(user.docId ?? "");
-  //
-  // }
   
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();

@@ -24,7 +24,7 @@ class TextFieldProfile extends StatelessWidget {
         enabled: isEnabled, 
         decoration: InputDecoration(
           labelText: text,
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
         ),
       ),
     );

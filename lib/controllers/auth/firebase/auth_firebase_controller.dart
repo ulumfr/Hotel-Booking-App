@@ -231,6 +231,10 @@ class AuthFirebaseController extends GetxController {
     Get.offAndToNamed('/main');
   }
 
+  void goEdit() {
+    Get.toNamed('/editProfile');
+  }
+
   void clear() {
     nameController.clear();
     emailController.clear();
