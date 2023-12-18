@@ -61,6 +61,7 @@ class AuthFirebaseController extends GetxController {
     required String confPassword,
   }) async {
     try {
+      final doc = userController.dbUsers.collection('users').doc();
       isLoading.value = true;
       if (password != confPassword) {
         throw 'Password and Confirm Password must match';
@@ -69,12 +70,16 @@ class AuthFirebaseController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
-      final user = userController.addUser(
-        auth.currentUser!.uid,
-        username,
-        email,
-        password,
-      );
+
+      final userMap = {
+        'id': auth.currentUser!.uid,
+        'username': username,
+        'email': email,
+        'password': password,
+        'docId': doc.id
+      };
+
+      final user = userController.addUser(userMap);
       userController.createUser(user);
       // await auth.currentUser!.updateDisplayName(username);
       prefs.setString('user_token', auth.currentUser!.uid);

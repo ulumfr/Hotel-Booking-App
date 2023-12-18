@@ -213,6 +213,7 @@ class AuthAppwriteController extends ClientController {
 
     final documentData = response.documents;
     final datas = documentData.map((e) => Users.fromJson(e.data)).toList();
+
     userdat.assignAll(datas);
     // final doc = Users.fromJson(documentData.data);
     controller.nameController.text = datas[0].username!;
