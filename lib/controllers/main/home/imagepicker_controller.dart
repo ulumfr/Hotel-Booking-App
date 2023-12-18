@@ -3,18 +3,26 @@ import 'package:hotel_booking_app/views/main/components/home/imgpicker/snackbar_
 import 'package:image_picker/image_picker.dart';
 
 class ImagepickerController extends GetxController {
+  
+  ImagepickerController() : _imagePicker = ImagePicker();
+  set imagePicker(ImagePicker value) => _imagePicker = value;
+  late ImagePicker _imagePicker;
   Rx<XFile?> imageFile = Rx<XFile?>(null);
 
-  void takePhoto(ImageSource source) async {
-    final pickedFile = await ImagePicker().pickImage(source: source);
+  Future<void> takePhoto(ImageSource source) async {
+    final pickedFile = await _imagePicker.pickImage(source: source);
     if (pickedFile != null) {
       imageFile.value = pickedFile;
-      MySnackBarImg.show(Get.context!, "Profile Picture Updated");
+      if (Get.context != null) {
+        MySnackBarImg.show(Get.context!, "Profile Picture Updated");
+      }
     }
   }
 
-  void resetImage() {
+  Future<void> resetImage() async {
     imageFile.value = null;
-    MySnackBarImg.show(Get.context!, "Reset Successfully");
+    if (Get.context != null) {
+      MySnackBarImg.show(Get.context!, "Reset Successfully");
+    }
   }
 }

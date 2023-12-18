@@ -10,3 +10,4 @@ class WebviewhotelController extends GetxController {
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..loadRequest(Uri.parse('https://www.booking.com/city/id/malang.id.html'));
 }
+
