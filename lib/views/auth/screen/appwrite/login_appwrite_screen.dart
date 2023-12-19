@@ -64,7 +64,7 @@ class LoginAppwriteScreen extends GetView<AuthAppwriteController> {
                         children: [
                           InkWell(
                             onTap: () {
-                              controller.goForgot();
+                              // controller.goForgot();
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 7),
@@ -83,7 +83,7 @@ class LoginAppwriteScreen extends GetView<AuthAppwriteController> {
                       const SizedBox(height: 25),
                       GestureDetector(
                         onTap: () {
-                          controller.login();
+                          // controller.login();
                         },
                         child: Container(
                           width: double.infinity,
@@ -119,7 +119,7 @@ class LoginAppwriteScreen extends GetView<AuthAppwriteController> {
                           const SizedBox(width: 5),
                           InkWell(
                             onTap: () {
-                              controller.goSignup();
+                              // controller.goSignup();
                             },
                             child: const Text(
                               "SignUp",

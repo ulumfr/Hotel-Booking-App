@@ -70,8 +70,8 @@ class AppRoutes {
       name: '/loginAppwrite',
       page: () => const LoginAppwriteScreen(),
       binding: BindingsBuilder(() {
+        // Get.put(ProfileScreenController());
         Get.put(AuthAppwriteController());
-        Get.put(ProfileScreenController());
       }),
     ),
     GetPage(

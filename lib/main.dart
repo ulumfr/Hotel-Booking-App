@@ -11,7 +11,7 @@ import 'package:hotel_booking_app/routes/app_pages.dart';
 
 void main() async {
   Get.put(ProfileScreenController());
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );

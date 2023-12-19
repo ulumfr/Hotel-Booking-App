@@ -44,17 +44,26 @@ class HomeScreen extends GetView<HomeScreenController> {
                       children: [
                         Padding(
                             padding: const EdgeInsets.only(top: 12),
-                            child: Obx(
-                              () => Text(
-                                // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
-                                'Welcome, ${authAppwriteController.userdat[0].username}',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
+                            child: Text(
+                              "Welcome",
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                            )
+                            // Obx(
+                            //   () => Text(
+                            //     // 'Welcome, ${isloginUser.displayName ?? isloginUser.email}' ,
+                            //     'Welcome, ${authAppwriteController.userdat[0].username}',
+                            //     style: const TextStyle(
+                            //       fontSize: 16,
+                            //       fontWeight: FontWeight.w700,
+                            //       overflow: TextOverflow.ellipsis,
+                            //     ),
+                            //   ),
+                            // )
+                        ),
                         const Row(
                           children: [
                             Icon(
