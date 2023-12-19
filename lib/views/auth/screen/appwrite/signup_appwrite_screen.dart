@@ -76,7 +76,7 @@ class SignupAppwriteScreen extends GetView<AuthAppwriteController> {
                       const SizedBox(height: 25),
                       GestureDetector(
                         onTap: () {
-                          controller.signup();
+                          // controller.signup();
                         },
                         child: Container(
                           width: double.infinity,
@@ -112,7 +112,7 @@ class SignupAppwriteScreen extends GetView<AuthAppwriteController> {
                           const SizedBox(width: 5),
                           InkWell(
                             onTap: () {
-                              controller.goLogin();
+                              // controller.goLogin();
                             },
                             child: const Text(
                               "Login",

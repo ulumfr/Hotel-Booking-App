@@ -89,7 +89,7 @@ class VerifyForgotAppwriteScreen extends GetView<AuthAppwriteController> {
                   margin: const EdgeInsets.symmetric(horizontal: 18),
                   child: GestureDetector(
                     onTap: () {
-                      controller.goResetPass();
+                      // controller.goResetPass();
                     },
                     child: Container(
                       width: double.infinity,

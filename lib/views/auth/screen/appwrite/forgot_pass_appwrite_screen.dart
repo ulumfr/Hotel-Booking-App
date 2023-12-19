@@ -64,7 +64,7 @@ class ForgotPassAppwriteScreen extends GetView<AuthAppwriteController> {
                       const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
-                          controller.goVerify();
+                          // controller.goVerify();
                         },
                         child: Container(
                           width: double.infinity,

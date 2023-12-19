@@ -111,7 +111,7 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                     child: ElevatedButton(
                       onPressed: () {
                         controller.toggleEditing();
-                        con.updateDoc();
+                        // con.updateDoc();
                       },
                       child: const Text('Save'),
                     ),
@@ -135,7 +135,7 @@ class EditProfileScreen extends GetView<ProfileScreenController> {
                       ),
                       confirm: TextButton(
                         onPressed: () {
-                          con.deleteAccount();
+                          // con.deleteAccount();
                           Get.back();
                         },
                         child: const Text(

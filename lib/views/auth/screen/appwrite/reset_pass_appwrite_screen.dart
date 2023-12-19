@@ -73,7 +73,7 @@ class ResetPassAppwriteScreen extends GetView<AuthAppwriteController> {
                       const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
-                          controller.goLogin();
+                          // controller.goLogin();
                         },
                         child: Container(
                           width: double.infinity,

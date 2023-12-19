@@ -115,7 +115,7 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                           const SizedBox(height: 20),
                           ProfileListItem(
                             onTap: () {
-                              authAppwriteController.goEdit();
+                              // authAppwriteController.goEdit();
                             },
                             icon: Icons.edit,
                             text: "Edit Profile",
@@ -155,7 +155,7 @@ class ProfileScreen extends GetView<AuthFirebaseController> {
                           const SizedBox(height: 20),
                           ProfileListItem(
                             onTap: () {
-                              authAppwriteController.logout();
+                              // authAppwriteController.logout();
                             },
                             icon: Icons.exit_to_app,
                             text: "Logout",
